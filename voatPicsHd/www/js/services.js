@@ -1,9 +1,10 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
+  .factory('Chats', ['$http', function ($http) {
   // Might use a resource here that returns a JSON array
 
-  // Some fake testing data
+
+    // Some fake testing data
   var chats = [{
     id: 0,
     name: 'Ben Sparrow',
@@ -31,9 +32,43 @@ angular.module('starter.services', [])
     face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
   }];
 
+    var voatData;
+    var voatFrontPageURL = 'https://voat.co/api/frontpage';
+
+    // fetch voat frontpage xml
+    $http({
+      method: 'GET',
+      url: voatFrontPageURL,
+    }).success(function (data) {
+
+      for (var i = 0; i < data.length; i++) {
+        var item = data[i];
+
+        if (item === null || item.MessageContent === null) {
+          continue;
+        }
+
+        if (item.MessageContent.indexOf('imgur') < 0) {
+          continue;
+        }
+
+        item.id = item.Id;
+        item.name = item.Name;
+        item.lastText = item.LinkDescription;
+        item.face = item.MessageContent;
+      }
+
+      voatData = data;
+    }).error(function () {
+      alert('error getting voat data');
+    });
+
+
+
+
   return {
     all: function() {
-      return chats;
+      return voatData === null ? chats : voatData;
     },
     remove: function(chat) {
       chats.splice(chats.indexOf(chat), 1);
@@ -47,4 +82,4 @@ angular.module('starter.services', [])
       return null;
     }
   };
-});
+  }]);
