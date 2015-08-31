@@ -1,5 +1,9 @@
 <ion-view view-title="Front Page">
   <ion-content>
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
     <ion-list>
       <ion-item class="item-thumbnail-left item-icon-right" ng-repeat="post in posts" type="item-text-wrap" href="#/tab/gallery">
           <img  ng-src="{{post.image}}">
