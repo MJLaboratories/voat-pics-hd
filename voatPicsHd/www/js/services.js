@@ -6,29 +6,24 @@ angular.module('starter.services', [])
   // Some fake testing data
   var chats = [{
     id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
+    title: 'Steve Jobs miraculously comes back to life to tell joke!',
+    image: 'https://slimgur.com/images/2015/08/29/65f6e6390514cd743e7ed0e03cad7933.jpg'
   }, {
     id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
+    title: 'Who wore it better?',
+    image: 'https://i.imgur.com/q7m31TM.jpg'
   }, {
     id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
+    title: 'Neural algorithm that "paints" photos based on the style of a given painting',
+    image: 'https://i.imgur.com/sb8dHcY.png'
   }, {
     id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'https://pbs.twimg.com/profile_images/598205061232103424/3j5HUXMY.png'
+    title: 'beautiful golden beach, Cornwall (1334 x 750) OC',
+    image: 'https://i.imgur.com/EiqVgXq.jpg'
   }, {
     id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
+    title: 'As big as a tennis court and as tall as a four-story building, a full-scale model of the James Webb Space Telescope model was on display at the South by Southwest Interactive Festival in Austin, Texas. NASAs JWST is the successor to Hubble and the largest space telescope to ever be built',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/d/d0/James_Webb_Telescope_Model_at_South_by_Southwest.jpg'
   }];
 
   return {
