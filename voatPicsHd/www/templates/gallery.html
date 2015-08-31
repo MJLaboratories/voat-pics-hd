@@ -4,20 +4,12 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<!--<ion-view view-title="{{chat.name}}">-->
-<!--<ion-content class="padding">-->
-<!--<img ng-src="{{chat.face}}" style="width: 64px; height: 64px">-->
-<!--<p>-->
-<!--{{chat.lastText}}-->
-<!--</p>-->
-<!--</ion-content>-->
-<!--</ion-view>-->
 <ion-view view-title="Gallery">
-  <ion-content has-bouncing="false">
-    <ion-slide-box show-pager="false">
-      <ion-slide ng-repeat="image in images">
-        <img ng-src="{{image.image}}">
-      </ion-slide>
-    </ion-slide-box>
-  </ion-content>
+<ion-content has-bouncing="false">
+    <ks-swiper-container loop="false" space-between="5" show-nav-buttons="false" slides-per-view="1"  pagination-clickable="false">
+      <ks-swiper-slide class="swiper-slide" ng-repeat="image in images">
+        <img width="100%" ng-src="{{image.image}}">
+      </ks-swiper-slide>
+    </ks-swiper-container>
+</ion-content>
 </ion-view>
