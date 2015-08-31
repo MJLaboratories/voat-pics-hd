@@ -9,6 +9,8 @@ angular.module('starter.controllers', [])
 
         //todo call service to get data.
         $scope.$broadcast('scroll.refreshComplete');
+
+        $scope.posts = Chats.all();
       },100);
 
     };

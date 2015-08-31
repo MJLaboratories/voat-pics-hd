@@ -27,7 +27,7 @@ angular.module('starter.services', [])
     image: 'https://upload.wikimedia.org/wikipedia/commons/d/d0/James_Webb_Telescope_Model_at_South_by_Southwest.jpg'
   }];
 
-    var voatData;
+    var voatData = null;
     var voatFrontPageURL = 'https://voat.co/api/frontpage';
 
     // fetch voat frontpage xml
@@ -35,7 +35,7 @@ angular.module('starter.services', [])
       method: 'GET',
       url: voatFrontPageURL,
     }).success(function (data) {
-
+      voatData = [];
       for (var i = 0; i < data.length; i++) {
         var item = data[i];
 
@@ -47,13 +47,14 @@ angular.module('starter.services', [])
           continue;
         }
 
+        voatData.push({id: item.Id, image: item.MessageContent, title: item.Linkdescription});
+
         item.id = item.Id;
-        item.name = item.Name;
-        item.lastText = item.LinkDescription;
-        item.face = item.MessageContent;
+        item.image = item.LinkDescription;
+        item.title = item.MessageContent;
       }
 
-      voatData = data;
+
     }).error(function () {
       alert('error getting voat data');
     });
