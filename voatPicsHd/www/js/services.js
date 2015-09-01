@@ -1,81 +1,67 @@
 angular.module('starter.services', [])
+  // factory method for creating model objects, as proposed at https://medium.com/opinionated-angularjs/angular-model-objects-with-javascript-classes-2e6a067c73bc
+  .factory('VoatPost', function () {
+    function VoatPost(id, title, link, upVoats, downVoats, submittedBy, commentCount) {
+      // Public properties, assigned to the instance ('this')
+      this.id = id;
+      this.title = title;
+      this.link = link;
+      this.upVoats = upVoats;
+      this.downVoats = downVoats;
+      this.submittedBy = submittedBy;
+      this.commentCount = commentCount;
+    }
 
-  .factory('Chats', ['$http', function ($http) {
-  // Might use a resource here that returns a JSON array
+    /**
+     * Static method, assigned to class
+     * Instance ('this') is not available in static context
+     */
+    VoatPost.build = function (data) {
+      if (data === null || data.MessageContent === null) {
+        return false;
+      }
 
+      if (data.MessageContent.indexOf('imgur') < 0) {
+        return false;
+      }
 
-    // Some fake testing data
-  var chats = [{
-    id: 0,
-    title: 'Steve Jobs miraculously comes back to life to tell joke!',
-    image: 'https://slimgur.com/images/2015/08/29/65f6e6390514cd743e7ed0e03cad7933.jpg'
-  }, {
-    id: 1,
-    title: 'Who wore it better?',
-    image: 'https://i.imgur.com/q7m31TM.jpg'
-  }, {
-    id: 2,
-    title: 'Neural algorithm that "paints" photos based on the style of a given painting',
-    image: 'https://i.imgur.com/sb8dHcY.png'
-  }, {
-    id: 3,
-    title: 'beautiful golden beach, Cornwall (1334 x 750) OC',
-    image: 'https://i.imgur.com/EiqVgXq.jpg'
-  }, {
-    id: 4,
-    title: 'As big as a tennis court and as tall as a four-story building, a full-scale model of the James Webb Space Telescope model was on display at the South by Southwest Interactive Festival in Austin, Texas. NASAs JWST is the successor to Hubble and the largest space telescope to ever be built',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/d/d0/James_Webb_Telescope_Model_at_South_by_Southwest.jpg'
-  }];
+      return new VoatPost(
+        data.Id, data.Linkdescription, data.MessageContent, data.Likes, data.Dislikes, data.Name, data.CommentCount
+      );
+    };
 
-    var voatData = null;
+    VoatPost.voatApiV1Transformer = function (responseData) {
+      // handle arrays
+      if (angular.isArray(responseData)) {
+        return responseData
+          .map(VoatPost.build)
+          .filter(Boolean);
+      }
+
+      // handle single objects
+      return VoatPost.build(responseData);
+    };
+
+    /**
+     * Return the constructor function
+     */
+    return VoatPost;
+  })
+  .factory('VoatPostalService', ['$http', '$q', 'VoatPost', function ($http, $q, VoatPost) {
     var voatFrontPageURL = 'https://voat.co/api/frontpage';
 
-    // fetch voat frontpage xml
-    $http({
-      method: 'GET',
-      url: voatFrontPageURL,
-    }).success(function (data) {
-      voatData = [];
-      for (var i = 0; i < data.length; i++) {
-        var item = data[i];
+    return {
+      all: function () {
+        var deferred = $q.defer();
 
-        if (item === null || item.MessageContent === null) {
-          continue;
-        }
+        $http
+          .get(voatFrontPageURL)
+          .success(function(data) {
+              voatPosts = VoatPost.voatApiV1Transformer(data);
+              deferred.resolve(voatPosts);
+            });
 
-        if (item.MessageContent.indexOf('imgur') < 0) {
-          continue;
-        }
-
-        voatData.push({id: item.Id, image: item.MessageContent, title: item.Linkdescription});
-
-        item.id = item.Id;
-        item.image = item.LinkDescription;
-        item.title = item.MessageContent;
+        return deferred.promise;
       }
-
-
-    }).error(function () {
-      alert('error getting voat data');
-    });
-
-
-
-
-  return {
-    all: function() {
-      return voatData === null ? chats : voatData;
-    },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
-    },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
-        }
-      }
-      return null;
-    }
-  };
+    };
   }]);

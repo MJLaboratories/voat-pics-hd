@@ -1,29 +1,38 @@
 angular.module('starter.controllers', [])
 
-  .controller('FrontPageCtrl', function ($scope, Chats, $timeout) {
-
+  .controller('FrontPageCtrl', function ($scope, VoatPostalService, $timeout) {
     $scope.doRefresh = function(){
-
       $timeout(function(){
-
-
-        //todo call service to get data.
-        $scope.$broadcast('scroll.refreshComplete');
-
-        $scope.posts = Chats.all();
+        VoatPostalService.all().then(function(voatPosts) {
+          $scope.posts = voatPosts;
+          $scope.$broadcast('scroll.refreshComplete');
+        });
       },100);
-
     };
 
-    $scope.posts = Chats.all();
-    $scope.remove = function (chat) {
-      Chats.remove(chat);
+    $scope.posts = [];
+
+    $scope.remove = function (post) {
+      VoatPostalService.remove(post);
     };
   })
-  .controller('GalleryCtrl', function ($scope, $stateParams, Chats) {
-    $scope.images = Chats.all();
 
-    $scope.activeSlide = Chats.get($stateParams.id)
+  .controller('GalleryCtrl', function ($scope, $stateParams, VoatPostalService) {
+    // do we want this to load data?
+    VoatPostalService.all().then(function(voatPosts) {
+      $scope.images = voatPosts;
+    });
+
+    if (!$scope.images) {
+      return;
+    }
+
+    // please replace with nice way to select from an array - I can't remember how'
+      for (var i = 0; i < $scope.images.length; i++) {
+        if ($scope.images[i].id === parseInt($stateParams.id)) {
+          $scope.activeSlide = $scope.images[i];
+        }
+      }
   });
 
 
