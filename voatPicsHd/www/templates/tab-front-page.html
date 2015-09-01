@@ -5,7 +5,7 @@
       on-refresh="doRefresh()">
     </ion-refresher>
     <ion-list>
-      <ion-item class="item-thumbnail-left item-icon-right" collection-repeat="post in posts" type="item-text-wrap" href="#/tab/gallery">
+      <ion-item class="item-thumbnail-left item-icon-right"  collection-repeat="post in voatPosts"  type="item-text-wrap" ng-href="#/tab/gallery">
           <img ng-src="{{post.link}}">
           <h2>{{post.title}}</h2> by {{post.submittedBy}}
           <br />Up: {{post.upVoats}}. Down: {{post.downVoats}}. Comment Count: {{post.commentCount}}.
