@@ -35,7 +35,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       .state('tab', {
         url: '/tab',
         abstract: true,
-        templateUrl: 'templates/tabs.html'
+        templateUrl: 'templates/main.html'
       })
 
       // Each tab has its own nav history stack:
@@ -44,7 +44,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         url: '/frontpage',
         views: {
           'tab-frontpage': {
-            templateUrl: 'templates/tab-front-page.html',
+            templateUrl: 'templates/front-page.html',
             controller: 'FrontPageCtrl'
           }
         }
