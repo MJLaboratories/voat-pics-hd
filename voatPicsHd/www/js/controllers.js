@@ -21,28 +21,21 @@ angular.module('starter.controllers', [])
 
   .controller('GalleryCtrl', function ($rootScope, $scope, $stateParams, VoatPostalService) {
 
-    //We can use the swiper object to navigate to certain slides. Just need to get routing setup to get the id from the list view.
-    $scope.swiper = {};
+    function findWithAttr(array, attr, value) {
+      for(var i = 0; i < array.length; i += 1) {
+        if(array[i][attr] === value) {
+          return i;
+        }
+      }
+    }
 
-    $scope.onReadySwiper = function (swiper) {
-
-      $scope.swiper = swiper;
-    };
+    $scope.activeSlideId = parseInt($stateParams.id);
 
     VoatPostalService.all().then(function (voatPosts) {
       $scope.voatPosts = voatPosts;
+      $scope.initialSlideIndex = findWithAttr($scope.voatPosts,'id',$scope.activeSlideId);
     });
 
-    if (!$scope.voatPosts) {
-      return;
-    }
-
-    // please replace with nice way to select from an array - I can't remember how'
-    for (var i = 0; i < $scope.images.length; i++) {
-      if ($scope.images[i].id === parseInt($stateParams.id)) {
-        $scope.activeSlide = $scope.images[i];
-      }
-    }
   });
 
 
