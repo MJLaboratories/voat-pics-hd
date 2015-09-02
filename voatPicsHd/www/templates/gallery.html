@@ -6,9 +6,9 @@
 -->
 <ion-view view-title="Gallery">
 <ion-content has-bouncing="false">
-    <ks-swiper-container loop="false" space-between="5" show-nav-buttons="false" slides-per-view="1"  pagination-clickable="false">
-      <ks-swiper-slide class="swiper-slide" ng-repeat="image in images">
-        <img width="100%" ng-src="{{image.image}}">
+    <ks-swiper-container swiper="swiper" on-ready="onReadySwiper(swiper)" loop="false" space-between="5" show-nav-buttons="false" slides-per-view="1"  pagination-clickable="false">
+      <ks-swiper-slide class="swiper-slide" ng-repeat="post in voatPosts">
+        <img width="100%" ng-src="{{post.link}}">
       </ks-swiper-slide>
     </ks-swiper-container>
 </ion-content>
