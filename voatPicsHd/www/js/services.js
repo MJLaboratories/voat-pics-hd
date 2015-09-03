@@ -16,12 +16,28 @@ angular.module('starter.services', [])
      * Static method, assigned to class
      * Instance ('this') is not available in static context
      */
+
+    //Move to string service
+    VoatPost.isValidExtension = function ext(url) {
+      var extension = VoatPost.getExtension(url);
+      if(extension ==".gifv")
+      {
+        return false;
+      }
+      return extension.charAt(0) === ".";
+    };
+
+    VoatPost.getExtension = function(url){
+      return (url = url.substr(1 + url.lastIndexOf("/")).split('?')[0]).substr(url.lastIndexOf("."));
+    };
+
     VoatPost.build = function (data) {
+
       if (data === null || data.MessageContent === null || data.MessageContent === undefined) {
         return false;
       }
 
-      if (data.MessageContent.indexOf('imgur') < 0) {
+      if (data.MessageContent.indexOf('imgur') < 0 || VoatPost.isValidExtension(data.MessageContent) === false) {
         return false;
       }
 
@@ -56,10 +72,10 @@ angular.module('starter.services', [])
 
         $http
           .get(voatFrontPageURL)
-          .success(function(data) {
-              voatPosts = VoatPost.voatApiV1Transformer(data);
-              deferred.resolve(voatPosts);
-            });
+          .success(function (data) {
+            voatPosts = VoatPost.voatApiV1Transformer(data);
+            deferred.resolve(voatPosts);
+          });
 
         return deferred.promise;
       }
