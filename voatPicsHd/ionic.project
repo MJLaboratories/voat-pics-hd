@@ -1,5 +1,8 @@
 {
   "name": "voat-pics-hd",
   "app_id": "683fbdb7",
-  "gulpStartupTasks": ["sass", "watch"]
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ]
 }
