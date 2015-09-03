@@ -17,7 +17,7 @@ angular.module('starter.services', [])
      * Instance ('this') is not available in static context
      */
     VoatPost.build = function (data) {
-      if (data === null || data.MessageContent === null) {
+      if (data === null || data.MessageContent === null || data.MessageContent === undefined) {
         return false;
       }
 
