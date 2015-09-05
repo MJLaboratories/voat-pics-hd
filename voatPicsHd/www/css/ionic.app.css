@@ -7725,3 +7725,17 @@ a.button {
   font-family: ‘Owswald’, sans-serif !important;
   font-weight: 300 !important;
   font-size: 9px !important; }
+
+.swiper-button-next {
+  top: 0% !important;
+  height: 100% !important;
+  margin-top: 0px !important;
+  width: 50px !important;
+  background-image: none !important; }
+
+.swiper-button-prev {
+  top: 0% !important;
+  width: 50px !important;
+  height: 100% !important;
+  margin-top: 0px !important;
+  background-image: none !important; }
