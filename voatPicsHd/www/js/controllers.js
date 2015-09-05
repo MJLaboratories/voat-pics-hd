@@ -19,7 +19,7 @@ angular.module('starter.controllers', [])
     };
   })
 
-  .controller('GalleryCtrl', function ($rootScope, $scope, $stateParams, VoatPostalService) {
+  .controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory) {
 
     function findWithAttr(array, attr, value) {
       for(var i = 0; i < array.length; i += 1) {
@@ -29,12 +29,16 @@ angular.module('starter.controllers', [])
       }
     }
 
+    var httpCache = $cacheFactory.get('voatPosts');
+    $scope.voatPosts = httpCache.get('voatPosts');
     $scope.activeSlideId = parseInt($stateParams.id);
 
-    VoatPostalService.all().then(function (voatPosts) {
-      $scope.voatPosts = voatPosts;
-      $scope.initialSlideIndex = findWithAttr($scope.voatPosts,'id',$scope.activeSlideId);
-    });
+    $scope.initialSlideIndex = findWithAttr($scope.voatPosts,'id',$scope.activeSlideId);
+
+    //VoatPostalService.all().then(function (voatPosts) {
+    //  $scope.voatPosts = voatPosts;
+    //  $scope.initialSlideIndex = findWithAttr($scope.voatPosts,'id',$scope.activeSlideId);
+    //});
 
   });
 

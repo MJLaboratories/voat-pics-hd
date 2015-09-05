@@ -1,7 +1,7 @@
 angular.module('starter.services', [])
   // factory method for creating model objects, as proposed at https://medium.com/opinionated-angularjs/angular-model-objects-with-javascript-classes-2e6a067c73bc
   .factory('VoatPost', function () {
-    function VoatPost(id, title, link, upVoats, downVoats, submittedBy, commentCount) {
+    function VoatPost(id, title, link, upVoats, downVoats, submittedBy, commentCount, thumbnail) {
       // Public properties, assigned to the instance ('this')
       this.id = id;
       this.title = title;
@@ -10,6 +10,12 @@ angular.module('starter.services', [])
       this.downVoats = downVoats;
       this.submittedBy = submittedBy;
       this.commentCount = commentCount;
+      if (thumbnail === undefined || thumbnail ===null) {
+        this.thumbnail = link;
+      }
+      else {
+        this.thumbnail = 'https://cdn.voat.co/thumbs/' + thumbnail;
+      }
     }
 
     /**
@@ -17,17 +23,16 @@ angular.module('starter.services', [])
      * Instance ('this') is not available in static context
      */
 
-    //Move to string service
+      //Move to string service
     VoatPost.isValidExtension = function ext(url) {
       var extension = VoatPost.getExtension(url);
-      if(extension ==".gifv")
-      {
+      if (extension == ".gifv") {
         return false;
       }
       return extension.charAt(0) === ".";
     };
 
-    VoatPost.getExtension = function(url){
+    VoatPost.getExtension = function (url) {
       return (url = url.substr(1 + url.lastIndexOf("/")).split('?')[0]).substr(url.lastIndexOf("."));
     };
 
@@ -42,7 +47,7 @@ angular.module('starter.services', [])
       }
 
       return new VoatPost(
-        data.Id, data.Linkdescription, data.MessageContent, data.Likes, data.Dislikes, data.Name, data.CommentCount
+        data.Id, data.Linkdescription, data.MessageContent, data.Likes, data.Dislikes, data.Name, data.CommentCount, data.Thumbnail
       );
     };
 
@@ -63,17 +68,23 @@ angular.module('starter.services', [])
      */
     return VoatPost;
   })
-  .factory('VoatPostalService', ['$http', '$q', 'VoatPost', function ($http, $q, VoatPost) {
+  .factory('VoatPostalService', ['$http', '$q', 'VoatPost', '$cacheFactory', function ($http, $q, VoatPost, $cacheFactory) {
     var voatFrontPageURL = 'https://voat.co/api/frontpage';
+    var voatPostCache = $cacheFactory('voatPosts');
 
     return {
       all: function () {
         var deferred = $q.defer();
 
         $http
-          .get(voatFrontPageURL)
+          .get(voatFrontPageURL, {cache: true})
           .success(function (data) {
-            voatPosts = VoatPost.voatApiV1Transformer(data);
+
+            var voatPosts = VoatPost.voatApiV1Transformer(data);
+
+            voatPostCache.remove('voatPosts');
+            voatPostCache.put('voatPosts', voatPosts);
+
             deferred.resolve(voatPosts);
           });
 
