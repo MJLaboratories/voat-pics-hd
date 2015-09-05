@@ -6,11 +6,19 @@
     </ion-refresher>
     <ion-list>
       <div collection-repeat="post in voatPosts">
-      <ion-item class="item-thumbnail-left item-icon-right" type="item-text-wrap" href="#/gallery/{{post.id}}">
+        <ion-item class="item-thumbnail-left item-icon-right" type="item-text-wrap" href="#/gallery/{{post.id}}">
           <img ng-src="{{post.thumbnail}}">
-          <h2>{{post.title}}</h2> by {{post.submittedBy}}
-          <br />Up: {{post.upVoats}}. Down: {{post.downVoats}}. Comment Count: {{post.commentCount}}.
-      </ion-item>
+
+          <span class="front-page-link">{{post.title}}</span>
+
+          <p class="front-page-details">submitted by {{post.submittedBy}}</p>
+
+          <p class="front-page-details"><i class="fa fa-arrow-up"></i> {{post.upVoats}} <i
+            class="fa fa-arrow-down"></i> {{post.downVoats}}</p>
+
+          <p class="front-page-details"> {{post.commentCount}} comments
+          </p>
+        </ion-item>
       </div>
     </ion-list>
   </ion-content>

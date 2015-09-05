@@ -7,10 +7,10 @@
 <ion-view view-title="Gallery">
   <ion-content has-bouncing="false">
     <ks-swiper-container swiper="swiper" initial-slide="initialSlideIndex" on-ready="onReadySwiper(swiper)" loop="false"
-                          show-nav-buttons="false" slides-per-view="1" pagination-clickable="false">
+                          show-nav-buttons="true" slides-per-view="1" pagination-clickable="false">
       <ks-swiper-slide class="swiper-slide" style="background-color: black" ng-repeat="post in voatPosts">
 
-          <img ng-src="{{post.link}}">
+          <img style="background-position:center" ng-src="{{post.link}}">
       </ks-swiper-slide>
     </ks-swiper-container>
   </ion-content>
