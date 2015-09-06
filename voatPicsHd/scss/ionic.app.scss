@@ -63,6 +63,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   margin-top:0px !important;
   width: 50px !important;
   background-image: none !important;
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0.2)!important;
 }
 .swiper-button-prev{
   top:0% !important;

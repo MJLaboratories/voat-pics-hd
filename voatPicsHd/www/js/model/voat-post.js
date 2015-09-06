@@ -1,6 +1,6 @@
-angular.module('starter.services', [])
+var module = angular.module('app.services');
   // factory method for creating model objects, as proposed at https://medium.com/opinionated-angularjs/angular-model-objects-with-javascript-classes-2e6a067c73bc
-  .factory('VoatPost', function () {
+  module.factory('VoatPost', function (UrlExtensionService) {
     function VoatPost(id, title, link, upVoats, downVoats, submittedBy, commentCount, thumbnail) {
       // Public properties, assigned to the instance ('this')
       this.id = id;
@@ -23,26 +23,13 @@ angular.module('starter.services', [])
      * Instance ('this') is not available in static context
      */
 
-      //Move to string service
-    VoatPost.isValidExtension = function ext(url) {
-      var extension = VoatPost.getExtension(url);
-      if (extension == ".gifv") {
-        return false;
-      }
-      return extension.charAt(0) === ".";
-    };
-
-    VoatPost.getExtension = function (url) {
-      return (url = url.substr(1 + url.lastIndexOf("/")).split('?')[0]).substr(url.lastIndexOf("."));
-    };
-
     VoatPost.build = function (data) {
 
       if (data === null || data.MessageContent === null || data.MessageContent === undefined) {
         return false;
       }
 
-      if (data.MessageContent.indexOf('imgur') < 0 || VoatPost.isValidExtension(data.MessageContent) === false) {
+      if (data.MessageContent.indexOf('imgur') < 0 || UrlExtensionService.isValidExtension(data.MessageContent) === false) {
         return false;
       }
 
@@ -67,28 +54,4 @@ angular.module('starter.services', [])
      * Return the constructor function
      */
     return VoatPost;
-  })
-  .factory('VoatPostalService', ['$http', '$q', 'VoatPost', '$cacheFactory', function ($http, $q, VoatPost, $cacheFactory) {
-    var voatFrontPageURL = 'https://voat.co/api/frontpage';
-    var voatPostCache = $cacheFactory('voatPosts');
-
-    return {
-      all: function () {
-        var deferred = $q.defer();
-
-        $http
-          .get(voatFrontPageURL, {cache: true})
-          .success(function (data) {
-
-            var voatPosts = VoatPost.voatApiV1Transformer(data);
-
-            voatPostCache.remove('voatPosts');
-            voatPostCache.put('voatPosts', voatPosts);
-
-            deferred.resolve(voatPosts);
-          });
-
-        return deferred.promise;
-      }
-    };
-  }]);
+  });

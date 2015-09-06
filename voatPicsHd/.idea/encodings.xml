@@ -7,8 +7,15 @@
     <file url="file://$PROJECT_DIR$/scss/ionic.app.scss" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/css/style.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/controller/front-page-controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/controller/gallery-controller.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/controllers.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/www/js/services.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/front-page-controller" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/main-module" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/main-module.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/model/voat-post.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/service/url-extension-service.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/service/voat-postal-service.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/front-page.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/gallery.html" charset="UTF-8" />
   </component>
