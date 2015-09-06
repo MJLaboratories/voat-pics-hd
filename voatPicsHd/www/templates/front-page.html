@@ -4,12 +4,13 @@
       pulling-text="Pull to refresh..."
       on-refresh="doRefresh()">
     </ion-refresher>
+
     <ion-list>
       <div collection-repeat="post in voatPosts">
         <ion-item class="item-thumbnail-left item-icon-right" type="item-text-wrap" href="#/gallery/{{post.id}}">
           <img ng-src="{{post.thumbnail}}">
 
-          <div class="front-page-link">{{post.title}}</div>
+          <span class="front-page-link">{{post.title}}</span>
 
           <p class="front-page-details">submitted by {{post.submittedBy}}
             <br/>

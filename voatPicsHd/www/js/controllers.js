@@ -1,22 +1,27 @@
 angular.module('starter.controllers', [])
 
-  .controller('FrontPageCtrl', function ($scope, VoatPostalService, $timeout) {
+  .controller('FrontPageCtrl', function ($scope, VoatPostalService, $timeout, $ionicLoading) {
+
+    $ionicLoading.show({
+      content: 'Loading',
+      animation: 'fade-in',
+      showBackdrop: true,
+      maxWidth: 200,
+      showDelay: 0
+    });
+
+    $scope.voatPosts = [];
+
     $scope.doRefresh = function () {
       $timeout(function () {
         VoatPostalService.all().then(function (voatPosts) {
           $scope.voatPosts = voatPosts;
+          $ionicLoading.hide();
           $scope.$broadcast('scroll.refreshComplete');
         });
-      }, 100);
+      }, 2000);
     };
-
     $scope.doRefresh();
-
-    $scope.voatPosts = [];
-
-    $scope.remove = function (post) {
-      VoatPostalService.remove(post);
-    };
   })
 
   .controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory) {
@@ -28,17 +33,11 @@ angular.module('starter.controllers', [])
         }
       }
     }
-
     var httpCache = $cacheFactory.get('voatPosts');
     $scope.voatPosts = httpCache.get('voatPosts');
     $scope.activeSlideId = parseInt($stateParams.id);
 
     $scope.initialSlideIndex = findWithAttr($scope.voatPosts,'id',$scope.activeSlideId);
-
-    //VoatPostalService.all().then(function (voatPosts) {
-    //  $scope.voatPosts = voatPosts;
-    //  $scope.initialSlideIndex = findWithAttr($scope.voatPosts,'id',$scope.activeSlideId);
-    //});
 
   });
 

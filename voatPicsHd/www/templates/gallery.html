@@ -4,14 +4,16 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="Gallery">
+<ion-view class="navigation-title" view-title="Gallery">
   <ion-content has-bouncing="false">
     <ks-swiper-container swiper="swiper" initial-slide="initialSlideIndex" on-ready="onReadySwiper(swiper)" loop="false"
                           show-nav-buttons="true" slides-per-view="1" pagination-clickable="false">
       <ks-swiper-slide class="swiper-slide" style="background-color: black" ng-repeat="post in voatPosts">
 
-          <img style="background-position:center" ng-src="{{post.link}}">
+          <img ng-src="{{post.link}}">
+          <!--<div  style="color: white; font-size: 11px">{{post.title}}</div>-->
       </ks-swiper-slide>
     </ks-swiper-container>
+
   </ion-content>
 </ion-view>
