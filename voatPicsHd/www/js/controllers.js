@@ -19,7 +19,7 @@ angular.module('starter.controllers', [])
           $ionicLoading.hide();
           $scope.$broadcast('scroll.refreshComplete');
         });
-      }, 2000);
+      }, 100);
     };
     $scope.doRefresh();
   })
