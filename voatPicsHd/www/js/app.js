@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in voat-post.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'app.controllers', 'app.services', 'ksSwiper'])
+angular.module('app', ['ionic', 'app.controllers', 'app.services', 'ksSwiper'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
