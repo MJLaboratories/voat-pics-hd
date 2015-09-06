@@ -48,6 +48,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .front-page-details{
   font-family: ‘Owswald’, sans-serif !important; font-weight: 300!important;
   font-size:9px !important;
+  line-height: 14px;
+  bottom:7px !important;
+  position:absolute;
 }
 
 .swiper-button-next{

@@ -9,14 +9,16 @@
         <ion-item class="item-thumbnail-left item-icon-right" type="item-text-wrap" href="#/gallery/{{post.id}}">
           <img ng-src="{{post.thumbnail}}">
 
-          <span class="front-page-link">{{post.title}}</span>
+          <div class="front-page-link">{{post.title}}</div>
 
-          <p class="front-page-details">submitted by {{post.submittedBy}}</p>
+          <p class="front-page-details">submitted by {{post.submittedBy}}
+            <br/>
 
-          <p class="front-page-details"><i class="fa fa-arrow-up"></i> {{post.upVoats}} <i
-            class="fa fa-arrow-down"></i> {{post.downVoats}}</p>
+            <i class="fa fa-arrow-up"></i> {{post.upVoats}} <i
+              class="fa fa-arrow-down"></i> {{post.downVoats}}
 
-          <p class="front-page-details"> {{post.commentCount}} comments
+            <br/>
+            {{post.commentCount}} comments
           </p>
         </ion-item>
       </div>
