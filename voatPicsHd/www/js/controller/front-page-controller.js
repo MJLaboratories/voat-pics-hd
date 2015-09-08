@@ -12,12 +12,13 @@ module.controller('FrontPageCtrl', function ($scope, VoatPostalService, $timeout
   $scope.voatPosts = [];
 
   $scope.doRefresh = function () {
+    $timeout(function () {
       VoatPostalService.all().then(function (voatPosts) {
         $scope.voatPosts = voatPosts;
         $ionicLoading.hide();
         $scope.$broadcast('scroll.refreshComplete');
-        $scope.$apply();
       });
+    }, 1);
 
   };
 

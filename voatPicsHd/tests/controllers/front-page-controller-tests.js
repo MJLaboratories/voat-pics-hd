@@ -10,7 +10,7 @@ describe('FrontPageCtrl', function () {
     this.$scope = $rootScope.$new();
     this.$timeout = $timeout;
 
-    ////create a promise for the spy to return to mock the async calls to the service
+    //create a promise for the spy to return to mock the async calls to the service
     mockDeferred = $q.defer();
     mockPromise = mockDeferred.promise;
 
@@ -30,21 +30,11 @@ describe('FrontPageCtrl', function () {
 
     controller = $controller('FrontPageCtrl', {$scope: this.$scope, VoatPostalService: mockVoatPostalService,  $timeout: this.$timeout, $ionicLoading: $ionicLoading});
 
-    ////Setup 2 functions for the spy to call if the async call was successfull or failed
-    //spyPromise.success = function (fn) {
-    //  //success of the promise consumes the success callback
-    //  spyPromise.then( function (data) {
-    //    //call the promise.success method in controller
-    //    fn(data);
-    //  });
-    //  return spyPromise;
-    //};
-
   }));
 
   describe('when the app first loads', function () {
     beforeEach(function() {
-      this.$scope.doRefresh();
+      this.$timeout.flush();
     });
 
     it('should have initialised with an empty data array', function () {
@@ -52,21 +42,20 @@ describe('FrontPageCtrl', function () {
     });
 
     it('should call voatPostalService.all', function () {
-      this.$scope.$apply();
       expect(mockVoatPostalService.all).toHaveBeenCalled();
     });
 
-    //describe('when the service call for data completes', function () {
-    //  var data = [{id: 'id', title: 'title', link: 'link', image: 'image'}];
-    //
-    //  beforeEach(function () {
-    //    mockDeferred.resolve(data);
-    //  });
-    //
-    //  it('the result of voatPostalService should be stored', function () {
-    //    this.$scope.$apply();
-    //    expect(this.$scope.voatPosts).toEqual(data);
-    //  });
-    //});
+    describe('when the service call for data completes', function () {
+      var data = [{id: 'id', title: 'title', link: 'link', image: 'image'}];
+
+      beforeEach(function () {
+        mockDeferred.resolve(data);
+        this.$scope.$apply();
+      });
+
+      it('the result of voatPostalService should be stored', function () {
+        expect(this.$scope.voatPosts).toEqual(data);
+      });
+    });
   });
 });
