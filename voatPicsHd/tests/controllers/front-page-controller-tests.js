@@ -20,9 +20,7 @@ describe('FrontPageCtrl', function () {
     mockVoatPostalService.all.and.returnValue(mockPromise);
 
     mockPromise.success = function (fn) {
-      //success of the promise consumes the success callback
       mockPromise.then( function (data) {
-        //call the promise.success method in controller
         fn(data);
       });
       return mockPromise;

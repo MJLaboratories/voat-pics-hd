@@ -1,5 +1,5 @@
 var module = angular.module('app.controllers');
-module.controller('FrontPageCtrl', function ($scope, VoatPostalService, $timeout, $ionicLoading) {
+module.controller('FrontPageCtrl', function ($scope, VoatPostalService, VoatScraper, $timeout, $ionicLoading) {
 
   $ionicLoading.show({
     content: 'Loading',
@@ -13,6 +13,10 @@ module.controller('FrontPageCtrl', function ($scope, VoatPostalService, $timeout
 
   $scope.doRefresh = function () {
     $timeout(function () {
+      VoatScraper.scrapeFrontPage().then(function (data) {
+        console.log(data);
+      });
+
       VoatPostalService.all().then(function (voatPosts) {
         $scope.voatPosts = voatPosts;
         $ionicLoading.hide();
