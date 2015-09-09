@@ -22,6 +22,18 @@ module.factory('VoatScraper', ['$http', '$q', 'VoatPost', '$timeout', function (
         });
       });
 
+    deferred.promise.then(function (data) {
+      var i = 1;
+
+      var doc = document.implementation.createHTMLDocument('');
+      doc.open();
+      doc.write(data);
+      doc.close();
+
+      var links = doc.getElementsByClassName('title may-blank');
+      var i = 1;
+    });
+
     return deferred.promise;
   };
 
