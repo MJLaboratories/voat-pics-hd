@@ -1,19 +1,19 @@
-<!--
-  This template loads for the 'tab.friend-detail' state (app.js)
-  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
-  The FriendsCtrl pulls data from the Friends service (service.js)
-  The Friends service returns an array of friend data
--->
-<ion-view class="navigation-title" view-title="Gallery">
-  <ion-content has-bouncing="false">
-    <ks-swiper-container swiper="swiper" initial-slide="initialSlideIndex" on-ready="onReadySwiper(swiper)" loop="false"
-                          show-nav-buttons="true" slides-per-view="1" pagination-clickable="false">
-      <ks-swiper-slide class="swiper-slide" style="background-color: black" ng-repeat="post in voatPosts">
+<ion-view class="navigation-title gallery-page" view-title="Gallery">
 
-          <img ng-src="{{post.link}}">
-          <!--<div  style="color: white; font-size: 11px">{{post.title}}</div>-->
-      </ks-swiper-slide>
-    </ks-swiper-container>
+<ion-slide-box class="gallery-slide-box" on-slide-changed="slideHasChanged($index)" show-pager="false" active-slide="activeSlideIndex">
 
-  </ion-content>
+  <ion-slide ng-repeat="post in voatPosts">
+
+<ion-content direction="xy" locking="false" class="has-header"> 
+          <img ng-class="{'fit-to-container': fitImageToScreen}" on-tap="imageTapped()" ng-src="{{post.link}}">
+</ion-content>
+          <div class="gallery-title-container">
+<p class="gallery-title">{{post.title}}
+</p></div>
+
+  </ion-slide>
+
+    
+</ion-slide-box>
+
 </ion-view>

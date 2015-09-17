@@ -2,6 +2,9 @@
 Thumbs.db
 ehthumbs.db
 
+# .idea files
+**/.idea/workspace.xml
+
 # Folder config file
 Desktop.ini
 
@@ -16,6 +19,11 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Dynamically created files
+voatPicsHd/node_modules/
+voatPicsHd/www/lib/
+voatPicsHd/www/css/
 
 # =========================
 # Operating System Files
@@ -41,5 +49,3 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-voatPicsHd/node_modules/
-voatPicsHd/www/lib/
