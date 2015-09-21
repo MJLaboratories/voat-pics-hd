@@ -1,19 +1,30 @@
 <ion-view class="navigation-title gallery-page" view-title="Gallery">
 
-<ion-slide-box class="gallery-slide-box" on-slide-changed="slideHasChanged($index)" show-pager="false" active-slide="activeSlideIndex">
+  <ion-slide-box on-tap="toggleImageOnly()"
+                 on-double-tap="toggleZoom()"
+                 on-slide-changed="slideHasChanged(index)"
+                 active-slide="activeSlideIndex"
+                 show-pager="false">
+    <ion-slide ng-repeat="post in voatPosts">
 
-  <ion-slide ng-repeat="post in voatPosts">
+      <ion-scroll direction="xy"
+                  zooming="true"
+                  min-zoom="{{minZoom}}"
+                  locking="false"
+                  ng-class="{'has-header': showNavigation}"
+                  style="width: 100%; height: 100%"
+                  delegate-handle="scrollHandle-{{$index}}"
+                  on-scroll="updateSlideStatus(activeSlideIndex)"
+                  on-release="updateSlideStatus(activeSlideIndex)">
+        <!--<div class="gallery-image" style="background-image: url( {{post.link}} )"></div>-->
 
-<ion-content direction="xy" locking="false" class="has-header"> 
-          <img ng-class="{'fit-to-container': fitImageToScreen}" on-tap="imageTapped()" ng-src="{{post.link}}">
-</ion-content>
-          <div class="gallery-title-container">
-<p class="gallery-title">{{post.title}}
-</p></div>
+        <img class="image" ng-src="{{post.link}}">
+      </ion-scroll>
 
-  </ion-slide>
-
-    
-</ion-slide-box>
+      <div class="gallery-title-container" ng-show="showImageTitle"  >
+        <p class="gallery-title">{{post.title}}</p>
+      </div>
+    </ion-slide>
+  </ion-slide-box>
 
 </ion-view>

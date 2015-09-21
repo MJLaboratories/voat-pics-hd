@@ -23,7 +23,6 @@ module.controller('FrontPageCtrl', function ($scope, VoatPostalService, VoatScra
         $scope.$broadcast('scroll.refreshComplete');
       });
     }, 1);
-
   };
 
   $scope.doRefresh();

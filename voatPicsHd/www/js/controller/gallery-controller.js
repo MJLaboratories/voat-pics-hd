@@ -1,5 +1,5 @@
 var module = angular.module('app.controllers');
-module.controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory, $ionicSlideBoxDelegate, $ionicScrollDelegate) {
+module.controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory, $ionicSlideBoxDelegate, $ionicScrollDelegate, $ionicNavBarDelegate) {
 
   function findWithAttr(array, attr, value) {
     for (var i = 0; i < array.length; i += 1) {
@@ -9,39 +9,52 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory, 
     }
   }
 
+  $scope.minZoom = 1;
+  $scope.showNavigation = true;
+  $scope.showImageTitle = true;
 
-  $scope.fitImageToScreen = true;
-  var slideEnabled = true;
-
-
-  function toggleFitImageToScreen() {
-    $scope.fitImageToScreen = !$scope.fitImageToScreen;
-    $scope.$broadcast('scroll.resize');
+  function getScrollDelegate () {
+    return $ionicScrollDelegate.$getByHandle('scrollHandle-' + $scope.activeSlideIndex);
   };
-
-  function toggleSwiperEnabled () {
-    slideEnabled = !slideEnabled;
-    $ionicSlideBoxDelegate.enableSlide(slideEnabled);
-  };
-
-  function resetImagePosition () {
-    var dontAnimate = false;
-    $ionicScrollDelegate.scrollTo(0, 0, dontAnimate);
-  }
 
   $scope.slideHasChanged = function ($index) {
     console.log("active slide changed: " + $index);
   };
-  
-  $scope.imageTapped = function () {
-    console.log("image tapped");
-    toggleFitImageToScreen();
-    toggleSwiperEnabled();
-    resetImagePosition();
 
-    // possible to use zoom animations and scroll to tapped location
-    // see http://forum.ionicframework.com/t/how-to-get-pagex-and-pagey-for-on-tap-event/6817/2
-    // http://ionicframework.com/docs/api/service/$ionicScrollDelegate/
+  $scope.updateSlideStatus = function(activeSlideIndex) {
+    var scrollDelegate = getScrollDelegate();
+    var scrollPosition = scrollDelegate.getScrollPosition();
+    var currentZoomLevel = scrollPosition.zoom;
+    var scrollDetails = scrollDelegate.handle + ": Top: " + scrollPosition.top + ". Left: " + scrollPosition.left+ ". Zoom: " + currentZoomLevel;
+
+    console.log(scrollDetails);
+
+    if (currentZoomLevel == $scope.minZoom) {
+      console.log("minimum zoom reached: sliding enabled");
+      $ionicSlideBoxDelegate.enableSlide(true);
+    } else {
+      console.log("zoomed: sliding disabled");
+      $ionicSlideBoxDelegate.enableSlide(false);
+    }
+  };
+
+  $scope.toggleImageOnly = function () {
+    $scope.showNavigation = !$scope.showNavigation;
+    $scope.showImageTitle = !$scope.showImageTitle;
+    $ionicNavBarDelegate.showBar($scope.showNavigation);
+  };
+
+  $scope.toggleZoom = function () {
+    var scrollDelegate = getScrollDelegate();
+    var currentZoomLevel = scrollDelegate.getScrollPosition().zoom;
+
+    if (currentZoomLevel == 1) {
+      console.log("image double-tapped while zoomed out: zooming in");
+      scrollDelegate.zoomBy(2.5, true);
+    } else {
+      console.log("image double-tapped while zoomed in: zooming out");
+      scrollDelegate.zoomTo(1, true);
+    }
   };
 
   var httpCache = $cacheFactory.get('voatPosts');
