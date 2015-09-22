@@ -1,11 +1,13 @@
 <ion-view class="navigation-title gallery-page" view-title="Gallery">
   <!--<ion-content style="width: 100%; height: 100%;" overflow-scroll="true" >-->
+
   <ion-slide-box style="width: 100%; height: 100%;" on-tap="toggleImageOnly()"
                  on-double-tap="toggleZoom()"
                  on-slide-changed="slideHasChanged(index)"
-                 active-slide="activeSlideIndex"
-                 show-pager="false">
-    <ion-slide ng-repeat="post in voatPosts">
+                 active-slide="selectedSlide"
+                 show-pager="false"
+                 does-continue="true">
+    <ion-slide ng-repeat="slide in slides">
 
       <ion-scroll direction="xy"
                   zooming="true"
@@ -13,18 +15,45 @@
                   locking="false"
                   ng-class="{'has-header': showNavigation}"
                   style="width: 100%; height: 100%"
-                  delegate-handle="scrollHandle-{{$index}}"
-                  on-scroll="updateSlideStatus(activeSlideIndex)"
-                  on-release="updateSlideStatus(activeSlideIndex)">
-        <!--<div class="gallery-image" style="background-image: url( {{post.link}} )"></div>-->
+                  delegate-handle="scrollHandle-{{slide.id}}"
+                  on-scroll="updateSlideStatus(selectedSlide)"
+                  on-release="updateSlideStatus(selectedSlide)">
 
-        <img class="image" ng-src="{{post.link}}">
+        <img class="image" ng-src="{{slide.link}}">
       </ion-scroll>
 
       <div class="gallery-title-container" ng-show="showImageTitle"  >
-        <p class="gallery-title">{{post.title}}</p>
+        <p class="gallery-title">{{slide.title}}</p>
       </div>
     </ion-slide>
   </ion-slide-box>
+
+
+  <!--<ion-slide-box-->
+    <!--style="height:100%; background:#8080c5;"-->
+    <!--on-slide-changed="slideChanged($index)"-->
+    <!--active-slide="selectedSlide"-->
+    <!--does-continue="true"-->
+    <!--show-pager="false">-->
+
+    <!--<ion-slide  ng class="has-header" ng-repeat="slide in slides">-->
+      <!--<div-->
+        <!--style="height:100%;"-->
+        <!--ng-style="{background:slide.color}">-->
+        <!--<div class="slide-header-text text-center light padding">-->
+          <!--Title: {{slide.title}}-->
+        <!--</div>-->
+        <!--<div class="slide-content-text text-center light">-->
+          <!--ID: {{slide.id}}-->
+        <!--</div>-->
+        <!--<div class="slide-footer-text text-center light padding">-->
+          <!--index {{$index}} / length {{slides.length}}-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</ion-slide>-->
+
+  <!--</ion-slide-box>-->
+
+
 <!--</ion-content>-->
 </ion-view>
