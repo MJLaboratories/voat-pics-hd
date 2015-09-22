@@ -14,7 +14,7 @@ module.controller('FrontPageCtrl', function ($scope, VoatPostalService, VoatScra
   $scope.doRefresh = function () {
     $timeout(function () {
       VoatScraper.scrapeFrontPage().then(function (data) {
-        console.log(data);
+        console.log('got data from scraper');
       });
 
       VoatPostalService.all().then(function (voatPosts) {

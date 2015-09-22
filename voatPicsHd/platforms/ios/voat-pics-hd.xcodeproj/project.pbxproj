@@ -45,6 +45,7 @@
 		9DF91A0926A7444B9DB28DC8 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 090048A8A2A34404B8F7A1DF /* CDVDevice.m */; };
 		B8AFC6A34D624A3CB044E027 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1353400713401E95AA44BC /* CDVSplashScreen.m */; };
 		B1805532CF614BB48D5EAE44 /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C251A67343E415F98A78B66 /* CDVViewController+SplashScreen.m */; };
+		13634022E7E24031B7EF8AD5 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4EB65635BE496A9954355C /* CDVStatusBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,8 @@
 		1C251A67343E415F98A78B66 /* CDVViewController+SplashScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVViewController+SplashScreen.m"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		80D216D8DEC0498CBE5D0C95 /* CDVSplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVSplashScreen.h"; path = "cordova-plugin-splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		799F343FFFD3427ABD1E81F6 /* CDVViewController+SplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVViewController+SplashScreen.h"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		9C4EB65635BE496A9954355C /* CDVStatusBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVStatusBar.m"; path = "cordova-plugin-statusbar/CDVStatusBar.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		586C704631E54DC488F4FF94 /* CDVStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVStatusBar.h"; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +235,8 @@
 				1C251A67343E415F98A78B66 /* CDVViewController+SplashScreen.m */,
 				80D216D8DEC0498CBE5D0C95 /* CDVSplashScreen.h */,
 				799F343FFFD3427ABD1E81F6 /* CDVViewController+SplashScreen.h */,
+				9C4EB65635BE496A9954355C /* CDVStatusBar.m */,
+				586C704631E54DC488F4FF94 /* CDVStatusBar.h */,
 			);
 			name = Plugins;
 			path = "voat-pics-hd/Plugins";
@@ -422,6 +427,7 @@
 				9DF91A0926A7444B9DB28DC8 /* CDVDevice.m in Sources */,
 				B8AFC6A34D624A3CB044E027 /* CDVSplashScreen.m in Sources */,
 				B1805532CF614BB48D5EAE44 /* CDVViewController+SplashScreen.m in Sources */,
+				13634022E7E24031B7EF8AD5 /* CDVStatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
