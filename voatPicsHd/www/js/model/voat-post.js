@@ -13,7 +13,7 @@ module.factory('VoatPost', function (UrlExtensionService) {
 
   VoatPost.build = function (id, title, link, upVoats, downVoats, submittedBy, commentCount, thumbnail) {
 
-    if (id === undefined || title === undefined || link === undefined) {
+    if (!id || id === null || !title || title === null || !link || link === null) {
       return null;
     }
 

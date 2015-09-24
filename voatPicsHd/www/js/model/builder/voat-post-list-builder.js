@@ -9,7 +9,7 @@ module.factory('VoatPostListBuilder', ['VoatPost', '$q', 'VoatScraper', function
     var id, title, imageLink, upVoats, downVoats, author, commentCount, thumbnail, submissions, voatPostList = [], deferred = $q.defer(), voatToAdd;
 
     VoatScraper.scrapePage(url).then(function (data) {
-      console.log(data);
+      // console.log(data);
 
 
       submissions = $(data).find('.submission');
@@ -33,7 +33,7 @@ module.factory('VoatPostListBuilder', ['VoatPost', '$q', 'VoatScraper', function
 
         voatToAdd = VoatPost.build(id, title, imageLink, upVoats, downVoats, author, commentCount, thumbnail);
 
-        if(voatToAdd !== null) {
+        if(voatToAdd && voatToAdd !== null) {
           voatPostList.push(voatToAdd);
         }
       });
