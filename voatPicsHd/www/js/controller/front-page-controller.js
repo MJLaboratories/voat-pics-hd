@@ -30,7 +30,7 @@ module.controller('FrontPageCtrl', function ($scope, $timeout, $ionicLoading, $c
   };
 
   var updateVoatPosts = function (voatPosts) {
-    $scope.voatPosts = voatPosts;
+    $scope.voatPosts =  $scope.voatPosts.concat(voatPosts);
     voatPostCache.remove('voatPosts');
     voatPostCache.put('voatPosts', voatPosts);
   };
