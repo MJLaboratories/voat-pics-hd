@@ -15,7 +15,7 @@
                   locking="false"
                   ng-class="{'has-header': showNavigation}"
                   style="width: 100%; height: 100%"
-                  delegate-handle="scrollHandle-{{slide.index}}"
+                  delegate-handle="scrollHandle-{{$index}}"
                   on-scroll="updateSlideStatus(selectedSlide)"
                   on-release="updateSlideStatus(selectedSlide)">
 
