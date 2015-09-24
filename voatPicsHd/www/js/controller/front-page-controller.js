@@ -40,6 +40,8 @@ module.controller('FrontPageCtrl', function ($scope, $timeout, $ionicLoading, $c
     var url = 'https://voat.co/v/pics';
     VoatPostListBuilder.build(url + '?page=' + index).then(function (voatPosts) {
       updateVoatPosts(voatPosts);
+      $ionicLoading.hide();
+      $scope.$broadcast('scroll.refreshComplete');
       $scope.$broadcast('scroll.infiniteScrollComplete');
     });
   };
@@ -47,6 +49,4 @@ module.controller('FrontPageCtrl', function ($scope, $timeout, $ionicLoading, $c
   $scope.$on('$stateChangeSuccess', function () {
     $scope.loadMoreData();
   });
-
-  $scope.doRefresh();
 });
