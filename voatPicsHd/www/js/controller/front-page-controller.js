@@ -1,5 +1,7 @@
 var module = angular.module('app.controllers');
-module.controller('FrontPageCtrl', function ($scope, VoatPostalService, VoatScraper, $timeout, $ionicLoading) {
+module.controller('FrontPageCtrl', function ($scope, $timeout, $ionicLoading, $cacheFactory, VoatPostListBuilder) {
+
+  var voatPostCache = $cacheFactory('voatPosts'), index = 0;
 
   $ionicLoading.show({
     content: 'Loading',
@@ -13,17 +15,38 @@ module.controller('FrontPageCtrl', function ($scope, VoatPostalService, VoatScra
 
   $scope.doRefresh = function () {
     $timeout(function () {
-      VoatScraper.scrapeFrontPage().then(function (data) {
-        console.log('got data from scraper');
-      });
-
-      VoatPostalService.all().then(function (voatPosts) {
-        $scope.voatPosts = voatPosts;
-        $ionicLoading.hide();
-        $scope.$broadcast('scroll.refreshComplete');
-      });
+      index = 0;
+      loadInitialData();
+      $ionicLoading.hide();
+      $scope.$broadcast('scroll.refreshComplete');
     }, 1);
   };
+
+  var loadInitialData = function () {
+    var url = 'https://voat.co/v/pics';
+    VoatPostListBuilder.build(url).then(function (voatPosts) {
+      updateVoatPosts(voatPosts);
+    });
+  };
+
+  var updateVoatPosts = function (voatPosts) {
+    $scope.voatPosts = voatPosts;
+    voatPostCache.remove('voatPosts');
+    voatPostCache.put('voatPosts', voatPosts);
+  };
+
+  $scope.loadMoreData = function () {
+    index = index + 1;
+    var url = 'https://voat.co/v/pics';
+    VoatPostListBuilder.build(url + '?page=' + index).then(function (voatPosts) {
+      updateVoatPosts(voatPosts);
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+    });
+  };
+
+  $scope.$on('$stateChangeSuccess', function () {
+    $scope.loadMoreData();
+  });
 
   $scope.doRefresh();
 });

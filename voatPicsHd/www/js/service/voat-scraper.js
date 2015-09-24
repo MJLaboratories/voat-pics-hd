@@ -90,8 +90,8 @@ module.factory('VoatScraper', ['$http', '$q', 'VoatPost', '$timeout', function (
   };
 
   return {
-    scrapeFrontPage: function () {
-      return loadVoatPage('https://voat.co');
+    scrapePage: function (url) {
+      return loadVoatPage(url);
     }
   };
 }]);
