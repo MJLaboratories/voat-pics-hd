@@ -1,9 +1,57 @@
 var module = angular.module('app.controllers');
-module.controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory, $ionicSlideBoxDelegate, $ionicScrollDelegate, $ionicNavBarDelegate) {
+
+module.directive('voatImageEvent', function ($timeout, $ionicGesture) {
+  return {
+
+    restrict: 'A',
+    link: function (scope, element) {
+      var isDoubleTapAction = false;
+
+      var imageDoubleTapGesture = function imageDoubleTapGesture(event) {
+
+        isDoubleTapAction = true;
+
+        $timeout(function () {
+          isDoubleTapAction = false;
+        }, 200);
+      };
+
+      var imageTapGesture = function imageTapGesture(event) {
+
+        if (isDoubleTapAction === true) {
+          return;
+        }
+        else {
+          $timeout(function () {
+            if (isDoubleTapAction === true) {
+
+              scope.toggleZoomFocusMode();
+              return;
+            }
+            else {
+              scope.toggleNav();
+            }
+          }, 200);
+        }
+      };
+
+      var doubleTapEvent = $ionicGesture.on('doubletap', imageDoubleTapGesture, element);
+      var tapEvent = $ionicGesture.on('tap', imageTapGesture, element);
+
+      scope.$on('$destroy', function () {
+        $ionicGesture.off(doubleTapEvent, 'doubletap', imageDoubleTapGesture);
+        $ionicGesture.off(tapEvent, 'tap', imageTapGesture);
+      });
+    }
+  }
+});
+
+
+module.controller('GalleryCtrl', function ($timeout, $scope, $stateParams, $cacheFactory, $ionicSlideBoxDelegate, $ionicScrollDelegate, $ionicNavBarDelegate) {
 
   function findWithAttr(array, attr, value) {
     for (var i = 0; i < array.length; i += 1) {
-      if (array[i][attr] == value) {
+      if (array[i][attr] === value) {
         return i;
       }
     }
@@ -18,6 +66,11 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory, 
 
   function getScrollDelegate() {
     return $ionicScrollDelegate.$getByHandle('scrollHandle-' + $scope.selectedSlide);
+  };
+
+  $scope.toggleNav = function () {
+
+    $scope.showImageTitle = !$scope.showImageTitle;
   };
 
   $scope.slideHasChanged = function (centreSlideIndex) {
@@ -66,7 +119,6 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory, 
 
   $scope.toggleZoomFocusMode = function () {
     toggleZoom();
-    toggleImageOnly();
   };
 
   $scope.updateSlideStatus = function (activeSlideIndex) {
@@ -98,8 +150,8 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory, 
     var selectedSlideIndex = findWithAttr(data, 'id', selectedSlideId);
     var initialSlides;
 
-    if (!selectedSlideIndex) {
-      console.log('ERROR: couldn\'t find post with id: ' +selectedSlideId);
+    if (selectedSlideIndex === undefined) {
+      console.log('ERROR: couldn\'t find post with id: ' + selectedSlideId);
       selectedSlideIndex = 0;
     }
 

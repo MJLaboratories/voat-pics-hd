@@ -2,7 +2,7 @@
   <!--<ion-content style="width: 100%; height: 100%;" overflow-scroll="true" >-->
 
   <ion-slide-box
-                 on-double-tap="toggleZoomFocusMode()"
+
                  on-slide-changed="slideHasChanged(index)"
                  active-slide="selectedSlide"
                  show-pager="false"
@@ -12,11 +12,14 @@
       <ion-scroll direction="xy"
                   zooming="true"
                   min-zoom="{{minZoom}}"
+                  max-zoom="10"
                   locking="false"
                   ng-class="{'has-header': showNavigation}"
-                  style="width: 100%; height: 100%"
+                  style="width: 100%; height: 100%; "
                   delegate-handle="scrollHandle-{{$index}}"
                   on-scroll="updateSlideStatus(selectedSlide)"
+                  voat-image-event
+
                   on-release="updateSlideStatus(selectedSlide)">
 
         <img class="image" ng-src="{{slide.link}}">
