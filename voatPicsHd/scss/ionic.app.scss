@@ -25,6 +25,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   background-color: transparent !important;
 }
 
+.post-thumbnail {
+  border-radius: 5px;
+}
 
 .slider {
   width: 100%;
@@ -35,15 +38,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   margin: 0 auto;
   background-color: black;
 }
-
-.gallery-image {
-  min-width: 100%;
-  min-height: 100%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center, center;
-}
-
 .image {
   max-width: 100%;
   max-height: 100%;
@@ -60,45 +54,25 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .gallery-title {
-  font-family: ‘Owswald’, sans-serif !important;
-  margin: 0;
   color: white;
-  font-size: 14px
+  margin: 0px;
 }
 
-.navigation-title {
-  font-family: ‘Owswald’, sans-serif !important;
-  font-weight: 700 !important;
+.post-list-title {
+  white-space: normal !important;
+  text-overflow: ellipsis !important;
+  max-height: 4.5em;
 }
 
-.front-page-link {
-  font-family: ‘Owswald’, sans-serif !important;
-  font-weight: 700 !important;
-  font-size: 12px !important;
-}
-
-.front-page-details {
-  font-family: ‘Owswald’, sans-serif !important;
+.post-list-details {
   font-weight: 300 !important;
-  font-size: 9px !important;
-  line-height: 14px;
-  bottom: 7px !important;
+  font-size: 11px !important;
+  bottom: 8px !important;
   position: absolute;
 }
 
-.swiper-button-next {
-  top: 0% !important;
-  height: 100% !important;
-  margin-top: 0px !important;
-  width: 50px !important;
-  background-image: none !important;
-  -webkit-tap-highlight-color: rgba(255, 0, 0, 0.2) !important;
-}
-
-.swiper-button-prev {
-  top: 0% !important;
-  width: 50px !important;
-  height: 100% !important;
-  margin-top: 0px !important;
-  background-image: none !important;
+.post-list-details i {
+  vertical-align: middle;
+  font-size: 15px !important;
+  color: $positive !important;
 }

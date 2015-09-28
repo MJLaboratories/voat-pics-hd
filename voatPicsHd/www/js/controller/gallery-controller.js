@@ -74,7 +74,6 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory, 
     var scrollPosition = scrollDelegate.getScrollPosition();
     var currentZoomLevel = scrollPosition.zoom;
 
-    //console.log(scrollDelegate.handle + ": Top: " + scrollPosition.top + ". Left: " + scrollPosition.left+ ". Zoom: " + currentZoomLevel);
     if (currentZoomLevel == $scope.minZoom) {
       $ionicSlideBoxDelegate.enableSlide(true);
       scrollDelegate.freezeScroll(true);
@@ -98,7 +97,7 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory, 
     var selectedSlideIndex = findWithAttr(data, 'id', selectedSlideId);
     var initialSlides;
 
-    if (!selectedSlideIndex) {
+    if (angular.isUndefinedOrNull(selectedSlideIndex)) {
       console.log('ERROR: couldn\'t find post with id: ' +selectedSlideId);
       selectedSlideIndex = 0;
     }
