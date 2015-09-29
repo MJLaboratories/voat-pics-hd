@@ -33,10 +33,10 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services', 'ngCordova'])
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
     $stateProvider
-      .state('frontpage', {
-        url: '/frontpage',
-        templateUrl: 'templates/front-page.html',
-        controller: 'FrontPageCtrl'
+      .state('list-view', {
+        url: '/',
+        templateUrl: 'templates/list-view.html',
+        controller: 'ListViewCtrl'
       })
       .state('gallery', {
         url: '/gallery/:id',
@@ -46,6 +46,6 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services', 'ngCordova'])
     );
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/frontpage');
+    $urlRouterProvider.otherwise('/');
 
   });

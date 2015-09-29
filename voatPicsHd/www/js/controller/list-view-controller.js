@@ -1,5 +1,5 @@
 var module = angular.module('app.controllers');
-module.controller('FrontPageCtrl', function ($scope, $timeout, $ionicLoading, $cacheFactory, VoatPostListBuilder) {
+module.controller('ListViewCtrl', function ($scope, $timeout, $ionicLoading, $cacheFactory, VoatPostListBuilder) {
 
   var voatPostCache = $cacheFactory('voatPosts'), index = 0;
 

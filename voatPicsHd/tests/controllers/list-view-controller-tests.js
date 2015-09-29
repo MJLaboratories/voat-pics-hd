@@ -1,4 +1,4 @@
-describe('FrontPageCtrl', function () {
+describe('ListViewCtrl', function () {
   var controller, $scope, $timeout, mockVoatPostalService, mockDeferred, mockPromise;
 
   beforeEach(module('app.services'));
@@ -26,7 +26,7 @@ describe('FrontPageCtrl', function () {
       return mockPromise;
     };
 
-    controller = $controller('FrontPageCtrl', {$scope: this.$scope, VoatPostalService: mockVoatPostalService,  $timeout: this.$timeout, $ionicLoading: $ionicLoading});
+    controller = $controller('ListViewCtrl', {$scope: this.$scope, VoatPostalService: mockVoatPostalService,  $timeout: this.$timeout, $ionicLoading: $ionicLoading});
 
   }));
 

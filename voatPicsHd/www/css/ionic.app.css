@@ -7700,19 +7700,23 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-.activated {
-  background-color: transparent !important; }
-
 .post-thumbnail {
   border-radius: 5px; }
+
+.contain-content {
+  max-height: 100%;
+  max-width: 100%; }
 
 .full-size {
   width: 100%;
   height: 100%; }
 
-.gallery-page {
-  margin: 0 auto;
+.dark-background, .dark-nav-bar {
   background-color: black; }
+
+.dark-nav-bar {
+  color: #fff;
+  border: none; }
 
 .gallery-title-container {
   position: fixed;
@@ -7722,7 +7726,7 @@ a.button {
   text-align: center;
   background: #6e6e6e;
   /* Fall-back for browsers that don't support rgba */
-  background: rgba(110, 110, 110, 0.6); }
+  background: rgba(110, 110, 110, 0.4); }
 
 .gallery-title {
   color: white;
@@ -7730,7 +7734,6 @@ a.button {
 
 .post-list-title {
   white-space: normal !important;
-  text-overflow: ellipsis !important;
   max-height: 4.5em; }
 
 .post-list-details {
