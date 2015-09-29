@@ -4,7 +4,11 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services', 'ngCordova'])
 
     angular.isUndefinedOrNull = function(val) {
       return angular.isUndefined(val) || val === null
-    }
+    };
+
+    angular.isNumberOrNumericString = function (o) {
+      return ! isNaN (o-0) && o !== null && o !== "" && o !== false;
+    };
 
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
