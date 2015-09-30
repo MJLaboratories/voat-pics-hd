@@ -14,7 +14,7 @@ module.factory('VoatPostListBuilder', ['VoatPost', '$q', 'VoatScraper', function
 
       submissions = $(data).find('.submission');
 
-      submissions.each(function(index,value){
+      submissions.each(function (index, value) {
 
         var submission = $(value);
         id = submission.attr('data-fullname');
@@ -29,11 +29,9 @@ module.factory('VoatPostListBuilder', ['VoatPost', '$q', 'VoatScraper', function
         title = image.attr('alt');
 
 
-
-
         voatToAdd = VoatPost.build(id, title, imageLink, upVoats, downVoats, author, commentCount, thumbnail);
 
-        if(voatToAdd && voatToAdd !== null) {
+        if (voatToAdd && voatToAdd !== null) {
           voatPostList.push(voatToAdd);
         }
       });

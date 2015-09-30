@@ -22,18 +22,6 @@ module.factory('VoatScraper', ['$http', '$q', 'VoatPost', '$timeout', function (
         });
       });
 
-    deferred.promise.then(function (data) {
-      var i = 1;
-
-      var doc = document.implementation.createHTMLDocument('');
-      doc.open();
-      doc.write(data);
-      doc.close();
-
-      var links = doc.getElementsByClassName('title may-blank');
-      var i = 1;
-    });
-
     return deferred.promise;
   };
 
@@ -71,7 +59,7 @@ module.factory('VoatScraper', ['$http', '$q', 'VoatPost', '$timeout', function (
     // add length of 'voat.co' to answer
     var answer = result + 7;
 
-    // cloudflare requires we wait 5 seconds before sending the answer
+    // cloudflare says wait 5 seconds before sending the answer, but 4 works
     $timeout(function () {
       $http({
         method: 'GET',

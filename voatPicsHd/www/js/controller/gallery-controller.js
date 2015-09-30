@@ -56,11 +56,13 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory, 
 
     if (currentZoomLevel == 1) {
       console.log("image double-tapped while zoomed out: zooming in");
-      scrollDelegate.zoomBy(2.5, true);
+      scrollDelegate.zoomBy(8, true);
     } else {
       console.log("image double-tapped while zoomed in: zooming out");
       scrollDelegate.zoomTo(1, true);
     }
+
+    scrollDelegate.resize();
   };
 
   $scope.toggleZoomFocusMode = function () {

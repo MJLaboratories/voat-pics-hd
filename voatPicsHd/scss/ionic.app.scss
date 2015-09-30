@@ -61,6 +61,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   background: rgba(110, 110, 110, .4);
 }
 
+.image {
+  width: 100%;
+  height: 600px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center, center;
+}
+
 .gallery-title {
   color: white;
   margin: 0px;

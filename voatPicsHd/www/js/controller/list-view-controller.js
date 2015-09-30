@@ -1,7 +1,8 @@
 var module = angular.module('app.controllers');
 module.controller('ListViewCtrl', function ($scope, $timeout, $ionicLoading, $cacheFactory, VoatPostListBuilder) {
 
-  var voatPostCache = $cacheFactory('voatPosts'), index = 0;
+  var voatPostCache = $cacheFactory('voatPosts'),
+    index = 0;
 
   $ionicLoading.show({
     content: 'Loading',
@@ -30,7 +31,7 @@ module.controller('ListViewCtrl', function ($scope, $timeout, $ionicLoading, $ca
   };
 
   var updateVoatPosts = function (voatPosts) {
-    $scope.voatPosts =  $scope.voatPosts.concat(voatPosts);
+    $scope.voatPosts = $scope.voatPosts.concat(voatPosts);
     voatPostCache.remove('voatPosts');
     voatPostCache.put('voatPosts', $scope.voatPosts);
   };
