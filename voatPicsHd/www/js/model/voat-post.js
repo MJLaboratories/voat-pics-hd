@@ -1,4 +1,4 @@
-var module = angular.module('app.services');
+var module = angular.module('app.model');
 module.factory('VoatPost', function (UrlExtensionService) {
   var ZERO_COMMENTS_STRING = "discuss";
 
@@ -13,7 +13,7 @@ module.factory('VoatPost', function (UrlExtensionService) {
     this.commentCountDescription = commentCount;
 
     var words = commentCount.split(" ");
-    if (angular.isNumberOrNumericString(words[0])) {
+    if (trueUtility.isNumberOrNumericString(words[0])) {
       this.commentCount = words[0];
     } else if (words[0] === ZERO_COMMENTS_STRING) {
       this.commentCount = "0";

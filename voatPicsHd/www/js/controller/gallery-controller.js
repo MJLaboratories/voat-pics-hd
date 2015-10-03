@@ -1,5 +1,5 @@
 var module = angular.module('app.controllers');
-module.controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory, $ionicSlideBoxDelegate, $ionicScrollDelegate, $ionicNavBarDelegate) {
+module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxDelegate, $cacheFactory, $ionicScrollDelegate, $ionicNavBarDelegate, VoatRepository) {
 
   function findWithAttr(array, attr, value) {
     for (var i = 0; i < array.length; i += 1) {
@@ -17,7 +17,7 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory, 
 
   function getScrollDelegate() {
     return $ionicScrollDelegate.$getByHandle('scrollHandle-' + $scope.selectedSlide);
-  };
+  }
 
   $scope.slideHasChanged = function (centreSlideIndex) {
     var leftSlideIndex = centreSlideIndex === 0 ? 2 : centreSlideIndex - 1,
@@ -44,13 +44,13 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory, 
     getScrollDelegate().resize();
   };
 
-  function toggleImageOnly() {
+  var toggleImageOnly = function () {
     $scope.showNavigation = !$scope.showNavigation;
     $scope.showImageTitle = !$scope.showImageTitle;
     $ionicNavBarDelegate.showBar($scope.showNavigation);
   };
 
-  function toggleZoom() {
+  var toggleZoom = function () {
     var scrollDelegate = getScrollDelegate();
     var currentZoomLevel = scrollDelegate.getScrollPosition().zoom;
 
@@ -91,15 +91,17 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory, 
   }
 
   function init() {
+    var httpCache = $cacheFactory.get('voatPosts');
     data = httpCache.get('voatPosts');
+
     applyIndexesTo(data); // slider requires images have sequenced indexes
 
     var selectedSlideId = $stateParams.id;
     var selectedSlideIndex = findWithAttr(data, 'id', selectedSlideId);
     var initialSlides;
 
-    if (angular.isUndefinedOrNull(selectedSlideIndex)) {
-      console.log('ERROR: couldn\'t find post with id: ' +selectedSlideId);
+    if (trueUtility.isUndefinedOrNull(selectedSlideIndex)) {
+      console.log('ERROR: couldn\'t find post with id: ' + selectedSlideId);
       selectedSlideIndex = 0;
     }
 
@@ -123,57 +125,56 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $cacheFactory, 
     $scope.slides = initialSlides;
   }
 
-  var httpCache = $cacheFactory.get('voatPosts');
   init();
 })
 
 
+  .
+  directive('navBarClass', function () {
+    return {
+      restrict: 'A',
+      compile: function (element, attrs) {
 
-.directive('navBarClass', function() {
-  return {
-    restrict: 'A',
-    compile: function(element, attrs) {
+        // We need to be able to add a class the cached nav-bar
+        // Which provides the background color
+        var cachedNavBar = document.querySelector('.nav-bar-block[nav-bar="cached"]');
+        var cachedHeaderBar = cachedNavBar.querySelector('.bar-header');
 
-      // We need to be able to add a class the cached nav-bar
-      // Which provides the background color
-      var cachedNavBar = document.querySelector('.nav-bar-block[nav-bar="cached"]');
-      var cachedHeaderBar = cachedNavBar.querySelector('.bar-header');
-
-      // And also the active nav-bar
-      // which provides the right class for the title
-      var activeNavBar = document.querySelector('.nav-bar-block[nav-bar="active"]');
-      var activeHeaderBar = activeNavBar.querySelector('.bar-header');
-      var barClass = attrs.navBarClass;
-      var ogColors = [];
-      var colors = ['positive', 'stable', 'light', 'royal', 'dark', 'assertive', 'calm', 'energized'];
-      var cleanUp = function() {
-        for (var i = 0; i < colors.length; i++) {
-          var currentColor = activeHeaderBar.classList.contains('bar-' + colors[i]);
-          if (currentColor) {
-            ogColors.push('bar-' + colors[i]);
+        // And also the active nav-bar
+        // which provides the right class for the title
+        var activeNavBar = document.querySelector('.nav-bar-block[nav-bar="active"]');
+        var activeHeaderBar = activeNavBar.querySelector('.bar-header');
+        var barClass = attrs.navBarClass;
+        var ogColors = [];
+        var colors = ['positive', 'stable', 'light', 'royal', 'dark', 'assertive', 'calm', 'energized'];
+        var cleanUp = function () {
+          for (var i = 0; i < colors.length; i++) {
+            var currentColor = activeHeaderBar.classList.contains('bar-' + colors[i]);
+            if (currentColor) {
+              ogColors.push('bar-' + colors[i]);
+            }
+            activeHeaderBar.classList.remove('bar-' + colors[i]);
+            cachedHeaderBar.classList.remove('bar-' + colors[i]);
           }
-          activeHeaderBar.classList.remove('bar-' + colors[i]);
-          cachedHeaderBar.classList.remove('bar-' + colors[i]);
-        }
-      };
-      return function($scope) {
-        $scope.$on('$ionicView.beforeEnter', function() {
-          cleanUp();
-          cachedHeaderBar.classList.add(barClass);
-          activeHeaderBar.classList.add(barClass);
-        });
+        };
+        return function ($scope) {
+          $scope.$on('$ionicView.beforeEnter', function () {
+            cleanUp();
+            cachedHeaderBar.classList.add(barClass);
+            activeHeaderBar.classList.add(barClass);
+          });
 
-        $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-          for (var j = 0; j < ogColors.length; j++) {
-            activeHeaderBar.classList.add(ogColors[j]);
-            cachedHeaderBar.classList.add(ogColors[j]);
-          }
-          cachedHeaderBar.classList.remove(barClass);
-          activeHeaderBar.classList.remove(barClass);
-          ogColors = [];
+          $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+            for (var j = 0; j < ogColors.length; j++) {
+              activeHeaderBar.classList.add(ogColors[j]);
+              cachedHeaderBar.classList.add(ogColors[j]);
+            }
+            cachedHeaderBar.classList.remove(barClass);
+            activeHeaderBar.classList.remove(barClass);
+            ogColors = [];
 
-        });
-      };
-    }
-  };
-});
+          });
+        };
+      }
+    };
+  });
