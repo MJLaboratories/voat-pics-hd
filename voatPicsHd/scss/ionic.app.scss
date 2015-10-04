@@ -19,7 +19,7 @@ $dark:                            #444 !default;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
-@import "www/lib/ionic/scss/ionic";
+@import "../www/lib/ionic/scss/ionic";
 
 
 // Ionic overrides
@@ -29,7 +29,25 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 
-// Custom stying
+// Custom styling
+
+.bar-header{
+text-align: center;
+  left:0px;
+}
+
+.back-text{
+  width: auto !important;
+}
+
+
+
+
+
+
+
+
+
 
 .contain-content {
   max-height: 100%;
@@ -42,7 +60,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 }
 
 .dark-background {
-  background-color: black;
+  background-color: black !important;
 }
 
 .dark-nav-bar {
@@ -51,15 +69,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   border: none;
 }
 
-.gallery-title-container {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  padding: 10px;
-  text-align: center;
-  background: rgb(110, 110, 110); /* Fall-back for browsers that don't support rgba */
-  background: rgba(110, 110, 110, .4);
-}
 
 .image {
   width: 100%;
@@ -69,9 +78,32 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   background-position: center, center;
 }
 
+.gallery-title-container {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding: 13px 6px;
+  padding-top: 13px;
+  text-align: center;
+  background: rgb(110, 110, 110); /* Fall-back for browsers that don't support rgba */
+  background: rgba(110, 110, 110, .4);
+  overflow: hidden;
+}
+
 .gallery-title {
   color: white;
+  vertical-align: middle;
   margin: 0px;
+  padding: 0px;
+  margin-right: 39px;
+}
+
+.gallery-share-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0 ;
+  margin: 0;
 }
 
 .post-list-title {
@@ -88,7 +120,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 .post-list-details i {
   vertical-align: middle;
-  font-size: 15px !important;
+  font-size: 13px !important;
   color: $positive !important;
 }
 

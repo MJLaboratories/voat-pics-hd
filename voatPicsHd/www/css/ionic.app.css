@@ -7703,6 +7703,13 @@ a.button {
 .post-thumbnail {
   border-radius: 5px; }
 
+.bar-header {
+  text-align: center;
+  left: 0px; }
+
+.back-text {
+  width: auto !important; }
+
 .contain-content {
   max-height: 100%;
   max-width: 100%; }
@@ -7712,21 +7719,11 @@ a.button {
   height: 100%; }
 
 .dark-background, .dark-nav-bar {
-  background-color: black; }
+  background-color: black !important; }
 
 .dark-nav-bar {
   color: #fff;
   border: none; }
-
-.gallery-title-container {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  padding: 10px;
-  text-align: center;
-  background: #6e6e6e;
-  /* Fall-back for browsers that don't support rgba */
-  background: rgba(110, 110, 110, 0.4); }
 
 .image {
   width: 100%;
@@ -7735,9 +7732,31 @@ a.button {
   background-repeat: no-repeat;
   background-position: center, center; }
 
+.gallery-title-container {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding: 13px 6px;
+  padding-top: 13px;
+  text-align: center;
+  background: #6e6e6e;
+  /* Fall-back for browsers that don't support rgba */
+  background: rgba(110, 110, 110, 0.4);
+  overflow: hidden; }
+
 .gallery-title {
   color: white;
-  margin: 0px; }
+  vertical-align: middle;
+  margin: 0px;
+  padding: 0px;
+  margin-right: 39px; }
+
+.gallery-share-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0;
+  margin: 0; }
 
 .post-list-title {
   white-space: normal !important;
@@ -7751,7 +7770,7 @@ a.button {
 
 .post-list-details i {
   vertical-align: middle;
-  font-size: 15px !important;
+  font-size: 13px !important;
   color: #387ef5 !important; }
 
 .post-list-details i:not(:first-child) {

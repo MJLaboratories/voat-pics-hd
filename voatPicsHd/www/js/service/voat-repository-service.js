@@ -9,17 +9,20 @@ module.factory('VoatRepository', function ($http, $q, VoatPost, $cacheFactory, C
 
     CloudFlareProtectedUrlLoader.loadUrl(voatFrontPageURL).then(function (data) {
       var voatPosts = VoatPostBuilder.build(data);
-
-
       httpCache.put('voatPosts', voatPosts);
-
       deferred.resolve(voatPosts);
     });
 
     return deferred.promise;
   };
 
+  var loadMoreData = function () {
+    return loadInitialData();
+  };
+
+
   return {
-    loadInitialData: loadInitialData
+    loadInitialData: loadInitialData,
+    loadMoreData: loadInitialData
   };
 });

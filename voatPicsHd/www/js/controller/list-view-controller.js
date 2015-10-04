@@ -14,11 +14,11 @@ module.controller('ListViewCtrl', function ($scope, $timeout, $ionicLoading, Voa
 
   $scope.doRefresh = function () {
     $timeout(function () {
-      refreshData();
-    }, 1);
+      initialiseData();
+    }, 0);
   };
 
-  var refreshData = function () {
+  var initialiseData = function () {
     VoatRepository.loadInitialData().then(function (voatPosts) {
       replaceVoatPosts(voatPosts);
       $scope.$broadcast('scroll.refreshComplete');
@@ -46,6 +46,6 @@ module.controller('ListViewCtrl', function ($scope, $timeout, $ionicLoading, Voa
 
   $scope.$on('$stateChangeSuccess', function () {
     showLoadingSpinner();
-    refreshData();
+    initialiseData();
   });
 });

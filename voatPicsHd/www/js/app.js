@@ -1,6 +1,6 @@
-angular.module('app', ['ionic', 'app.controllers', 'app.services', 'ngCordova'])
+angular.module('app', ['ionic', 'app.controllers', 'app.services', 'ngCordova', 'ionic-material'])
 
-  .run(function ($ionicPlatform) {
+  .run(function ($ionicPlatform, ionicMaterialInk) {
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -8,6 +8,8 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services', 'ngCordova'])
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         cordova.plugins.Keyboard.disableScroll(true);
       }
+
+      ionicMaterialInk.displayEffect();
     });
   })
 
