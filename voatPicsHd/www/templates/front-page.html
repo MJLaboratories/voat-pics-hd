@@ -1,4 +1,4 @@
-<ion-view  view-title="Front Page">
+<ion-view view-title="Front Page">
   <ion-content>
     <ion-refresher
       pulling-text="Pull to refresh..."
@@ -7,19 +7,16 @@
 
     <ion-list>
       <div collection-repeat="post in voatPosts">
-        <ion-item class="item-thumbnail-left item-icon-right" type="item-text-wrap" href="#/gallery/{{post.id}}">
-          <img style="border-radius: 5px;" ng-src="{{post.thumbnail}}">
+        <ion-item class="item-thumbnail-left item-icon-right " type="item-text-wrap" href="#/gallery/{{post.id}}">
+          <img class="post-thumbnail" ng-src="{{post.thumbnail}}">
 
-          <span class="front-page-link">{{post.title}}</span>
+          <p class="post-list-title">{{post.title}}</p>
 
-          <p class="front-page-details">submitted by {{post.submittedBy}}
-            <br/>
-
-            <i class="fa fa-arrow-up"></i> {{post.upVoats}} <i
-              class="fa fa-arrow-down"></i> {{post.downVoats}}
-
-            <br/>
-            {{post.commentCount}}
+          <p class="post-list-details">
+            <i class="fa fa-arrow-up"></i> {{post.upVoats}} <span class="divider">|</span>
+            <i class="fa fa-arrow-down"></i> {{post.downVoats}} <span class="divider">|</span>
+            <i class="ion-chatboxes"></i> {{post.commentCount}} <span class="divider">|</span>
+            <i class="ion-person"></i> {{post.submittedBy}}
           </p>
         </ion-item>
       </div>

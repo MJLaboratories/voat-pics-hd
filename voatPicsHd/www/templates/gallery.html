@@ -6,7 +6,8 @@
                  on-slide-changed="slideHasChanged(index)"
                  active-slide="selectedSlide"
                  show-pager="false"
-                 does-continue="true">
+                 does-continue="true"
+      class="full-size">
     <ion-slide ng-repeat="slide in slides">
 
       <ion-scroll direction="xy"
@@ -22,7 +23,10 @@
 
                   on-release="updateSlideStatus(selectedSlide)">
 
-        <img class="image" ng-src="{{slide.link}}">
+
+        <img class="full-size" ng-src="{{slide.link}}">
+
+
       </ion-scroll>
 
       <div class="gallery-title-container" ng-show="showImageTitle"  >

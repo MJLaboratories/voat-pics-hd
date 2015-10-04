@@ -1,5 +1,7 @@
 var module = angular.module('app.services');
 module.factory('VoatPost', function (UrlExtensionService) {
+  var ZERO_COMMENTS_STRING = "discuss";
+
   function VoatPost(id, title, link, upVoats, downVoats, submittedBy, commentCount, thumbnail) {
     this.id = id;
     this.title = title;
@@ -7,8 +9,17 @@ module.factory('VoatPost', function (UrlExtensionService) {
     this.upVoats = upVoats;
     this.downVoats = downVoats;
     this.submittedBy = submittedBy;
-    this.commentCount = commentCount;
     this.thumbnail = thumbnail;
+    this.commentCountDescription = commentCount;
+
+    var words = commentCount.split(" ");
+    if (angular.isNumberOrNumericString(words[0])) {
+      this.commentCount = words[0];
+    } else if (words[0] === ZERO_COMMENTS_STRING) {
+      this.commentCount = "0";
+    } else {
+      this.commentCount = "unknown"
+    }
   }
 
   VoatPost.build = function (id, title, link, upVoats, downVoats, submittedBy, commentCount, thumbnail) {
