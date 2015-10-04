@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/voatPicsHd/tests/controllers/front-page-controller-tests.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/voatPicsHd/tests/controllers/list-view-controller-tests.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/voatPicsHd/tests/my.conf.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/voatPicsHd/www/js/controller/front-page-controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/voatPicsHd/tests/true-utility-tests.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/voatPicsHd/www/js/app.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/voatPicsHd/www/js/controller/gallery-controller.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/voatPicsHd/www/js/directive/voat-gallery-event-directive.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/voatPicsHd/www/js/service/voat-postal-service.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/voatPicsHd/www/js/controller/list-view-controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/voatPicsHd/www/js/main-module.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/voatPicsHd/www/js/model/voat-post-builder.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/voatPicsHd/www/js/model/voat-post.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/voatPicsHd/www/js/service/cloud-flare-protected-url-loader.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/voatPicsHd/www/js/service/cloud-flare-solver.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/voatPicsHd/www/js/service/voat-repository-service.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/voatPicsHd/www/js/service/voat-scraper.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/voatPicsHd/www/templates/front-page.html" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/voatPicsHd/www/templates/gallery.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/voatPicsHd/www/js/true-utility.js" charset="UTF-8" />
   </component>
 </project>

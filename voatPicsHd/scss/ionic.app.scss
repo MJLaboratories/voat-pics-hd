@@ -19,48 +19,95 @@ $dark:                            #444 !default;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
-@import "www/lib/ionic/scss/ionic";
+@import "../www/lib/ionic/scss/ionic";
 
-.activated {
-  background-color: transparent !important;
-}
+
+// Ionic overrides
 
 .post-thumbnail {
   border-radius: 5px;
 }
 
-.slider {
+
+// Custom styling
+
+.bar-header{
+text-align: center;
+  left:0px;
+}
+
+.back-text{
+  width: auto !important;
+}
+
+
+
+
+
+
+
+
+
+
+.contain-content {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.full-size {
   width: 100%;
   height: 100%;
 }
 
-.gallery-page {
-  margin: 0 auto;
-  background-color: black;
+.dark-background {
+  background-color: black !important;
 }
+
+.dark-nav-bar {
+  @extend .dark-background;
+  color: $light;
+  border: none;
+}
+
+
 .image {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 600px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center, center;
 }
 
 .gallery-title-container {
   position: fixed;
   width: 100%;
   bottom: 0;
-  padding: 10px;
+  padding: 13px 6px;
+  padding-top: 13px;
   text-align: center;
   background: rgb(110, 110, 110); /* Fall-back for browsers that don't support rgba */
-  background: rgba(110, 110, 110, .6);
+  background: rgba(110, 110, 110, .4);
+  overflow: hidden;
 }
 
 .gallery-title {
   color: white;
+  vertical-align: middle;
   margin: 0px;
+  padding: 0px;
+  margin-right: 39px;
+}
+
+.gallery-share-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0 ;
+  margin: 0;
 }
 
 .post-list-title {
   white-space: normal !important;
-  text-overflow: ellipsis !important;
   max-height: 4.5em;
 }
 
@@ -73,6 +120,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 .post-list-details i {
   vertical-align: middle;
-  font-size: 15px !important;
+  font-size: 13px !important;
   color: $positive !important;
+}
+
+.post-list-details i:not(:first-child) {
+  margin-left: 5px;
 }

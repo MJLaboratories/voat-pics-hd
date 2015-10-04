@@ -13,7 +13,6 @@ module.factory('UrlExtensionService', function () {
   };
 
   return {
-    isValidExtension: isValidExtension,
-    getExtension: getExtension
+    isValidExtension: isValidExtension
   }
 });

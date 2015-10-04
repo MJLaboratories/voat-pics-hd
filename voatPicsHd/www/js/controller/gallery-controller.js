@@ -1,57 +1,9 @@
 var module = angular.module('app.controllers');
-
-module.directive('voatImageEvent', function ($timeout, $ionicGesture) {
-  return {
-
-    restrict: 'A',
-    link: function (scope, element) {
-      var isDoubleTapAction = false;
-
-      var imageDoubleTapGesture = function imageDoubleTapGesture(event) {
-
-        isDoubleTapAction = true;
-
-        $timeout(function () {
-          isDoubleTapAction = false;
-        }, 200);
-      };
-
-      var imageTapGesture = function imageTapGesture(event) {
-
-        if (isDoubleTapAction === true) {
-          return;
-        }
-        else {
-          $timeout(function () {
-            if (isDoubleTapAction === true) {
-
-              scope.toggleZoomFocusMode();
-              return;
-            }
-            else {
-              scope.toggleNav();
-            }
-          }, 200);
-        }
-      };
-
-      var doubleTapEvent = $ionicGesture.on('doubletap', imageDoubleTapGesture, element);
-      var tapEvent = $ionicGesture.on('tap', imageTapGesture, element);
-
-      scope.$on('$destroy', function () {
-        $ionicGesture.off(doubleTapEvent, 'doubletap', imageDoubleTapGesture);
-        $ionicGesture.off(tapEvent, 'tap', imageTapGesture);
-      });
-    }
-  }
-});
-
-
-module.controller('GalleryCtrl', function ($timeout, $scope, $stateParams, $cacheFactory, $ionicSlideBoxDelegate, $ionicScrollDelegate, $ionicNavBarDelegate) {
+module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxDelegate, $cacheFactory, $ionicScrollDelegate, $ionicNavBarDelegate, VoatRepository, $cordovaSocialSharing, $ionicPlatform) {
 
   function findWithAttr(array, attr, value) {
     for (var i = 0; i < array.length; i += 1) {
-      if (array[i][attr] === value) {
+      if (array[i][attr] == value) {
         return i;
       }
     }
@@ -63,15 +15,9 @@ module.controller('GalleryCtrl', function ($timeout, $scope, $stateParams, $cach
   var data = [];
   $scope.selectedSlide = 0;
 
-
   function getScrollDelegate() {
     return $ionicScrollDelegate.$getByHandle('scrollHandle-' + $scope.selectedSlide);
-  };
-
-  $scope.toggleNav = function () {
-
-    $scope.showImageTitle = !$scope.showImageTitle;
-  };
+  }
 
   $scope.slideHasChanged = function (centreSlideIndex) {
     var leftSlideIndex = centreSlideIndex === 0 ? 2 : centreSlideIndex - 1,
@@ -98,27 +44,30 @@ module.controller('GalleryCtrl', function ($timeout, $scope, $stateParams, $cach
     getScrollDelegate().resize();
   };
 
-  function toggleImageOnly() {
+  var toggleImageOnly = function () {
     $scope.showNavigation = !$scope.showNavigation;
     $scope.showImageTitle = !$scope.showImageTitle;
     $ionicNavBarDelegate.showBar($scope.showNavigation);
   };
 
-  function toggleZoom() {
+  var toggleZoom = function () {
     var scrollDelegate = getScrollDelegate();
     var currentZoomLevel = scrollDelegate.getScrollPosition().zoom;
 
     if (currentZoomLevel == 1) {
       console.log("image double-tapped while zoomed out: zooming in");
-      scrollDelegate.zoomBy(2.5, true);
+      scrollDelegate.zoomBy(8, true);
     } else {
       console.log("image double-tapped while zoomed in: zooming out");
       scrollDelegate.zoomTo(1, true);
     }
+
+    scrollDelegate.resize();
   };
 
   $scope.toggleZoomFocusMode = function () {
     toggleZoom();
+    toggleImageOnly();
   };
 
   $scope.updateSlideStatus = function (activeSlideIndex) {
@@ -126,7 +75,6 @@ module.controller('GalleryCtrl', function ($timeout, $scope, $stateParams, $cach
     var scrollPosition = scrollDelegate.getScrollPosition();
     var currentZoomLevel = scrollPosition.zoom;
 
-    //console.log(scrollDelegate.handle + ": Top: " + scrollPosition.top + ". Left: " + scrollPosition.left+ ". Zoom: " + currentZoomLevel);
     if (currentZoomLevel == $scope.minZoom) {
       $ionicSlideBoxDelegate.enableSlide(true);
       scrollDelegate.freezeScroll(true);
@@ -143,14 +91,16 @@ module.controller('GalleryCtrl', function ($timeout, $scope, $stateParams, $cach
   }
 
   function init() {
+    var httpCache = $cacheFactory.get('voatPosts');
     data = httpCache.get('voatPosts');
+
     applyIndexesTo(data); // slider requires images have sequenced indexes
 
     var selectedSlideId = $stateParams.id;
     var selectedSlideIndex = findWithAttr(data, 'id', selectedSlideId);
     var initialSlides;
 
-    if (selectedSlideIndex === undefined) {
+    if (trueUtility.isUndefinedOrNull(selectedSlideIndex)) {
       console.log('ERROR: couldn\'t find post with id: ' + selectedSlideId);
       selectedSlideIndex = 0;
     }
@@ -175,6 +125,17 @@ module.controller('GalleryCtrl', function ($timeout, $scope, $stateParams, $cach
     $scope.slides = initialSlides;
   }
 
-  var httpCache = $cacheFactory.get('voatPosts');
   init();
+
+  $scope.doShare = function () {
+
+    $ionicPlatform.ready(function() {
+      $cordovaSocialSharing.shareViaWhatsApp("message", data[0].link, "title");
+    });
+
+
+  };
 });
+
+
+
