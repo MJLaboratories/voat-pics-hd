@@ -15,6 +15,7 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
+      '../node_modules/jasmine-collection-matchers/index.js',
       '../www/lib/angular/angular.js',
       '../www/js/*.js',
       '../www/js/*/*.js',
@@ -65,4 +66,4 @@ module.exports = function (config) {
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false
   })
-}
+};

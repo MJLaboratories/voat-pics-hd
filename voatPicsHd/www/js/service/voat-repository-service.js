@@ -1,28 +1,122 @@
 var module = angular.module('app.services');
-module.factory('VoatRepository', function ($http, $q, VoatPost, $cacheFactory, CloudFlareProtectedUrlLoader, VoatPostBuilder) {
-  var voatFrontPageURL = 'https://voat.co/v/pics';
+module.factory('VoatRepository', function ($q, VoatPost, $cacheFactory, CloudFlareProtectedUrlLoader, VoatPostBuilder) {
+  var VOAT_PICS_URL = 'https://voat.co/v/pics/';
+  var VOAT_GIFS_URL = 'https://voat.co/v/gifs/';
+  var VOAT_AWW_URL = 'https://voat.co/v/aww/';
+  var VOAT_FUNNY_URL = 'https://voat.co/v/funny/';
 
-  var httpCache = $cacheFactory('voatPosts');
+  var voatPosts = null;
+  var refreshDeferred = null;
+  var loadMoreDeferred = null;
 
-  var loadInitialData = function () {
-    var deferred = $q.defer();
+  var voatPageIndexes = [];
+  var resetVoatPageIndexes = function () {
+    voatPageIndexes[VOAT_PICS_URL] = 0;
+    voatPageIndexes[VOAT_GIFS_URL] = 0;
+    voatPageIndexes[VOAT_AWW_URL] = 0;
+    voatPageIndexes[VOAT_FUNNY_URL] = 0;
+  };
+  resetVoatPageIndexes();
 
-    CloudFlareProtectedUrlLoader.loadUrl(voatFrontPageURL).then(function (data) {
-      var voatPosts = VoatPostBuilder.build(data);
-      httpCache.put('voatPosts', voatPosts);
-      deferred.resolve(voatPosts);
+  var getNextVoatSubverseUrl = function (voatUrl) {
+    var pageIndex = voatPageIndexes[voatUrl];
+    var url = voatUrl;
+
+    if (pageIndex > 0) {
+      url = url +'?page=' +pageIndex;
+    }
+
+    voatPageIndexes[voatUrl]++;
+
+    return url;
+  };
+
+  var loadNextPicsPage = function () {
+    var voatPicsPageUrl = getNextVoatSubverseUrl(VOAT_PICS_URL);
+    return CloudFlareProtectedUrlLoader.loadUrl(voatPicsPageUrl)
+  };
+
+  var loadNextGifsPage = function () {
+    var voatGifsPageUrl = getNextVoatSubverseUrl(VOAT_GIFS_URL);
+    return CloudFlareProtectedUrlLoader.loadUrl(voatGifsPageUrl)
+  };
+
+  var loadNextAwwPage = function () {
+    var voatAwwPageUrl = getNextVoatSubverseUrl(VOAT_AWW_URL);
+    return CloudFlareProtectedUrlLoader.loadUrl(voatAwwPageUrl)
+  };
+
+  var loadNextFunnyPage = function () {
+    var voatFunnyPageUrl = getNextVoatSubverseUrl(VOAT_FUNNY_URL);
+    return CloudFlareProtectedUrlLoader.loadUrl(voatFunnyPageUrl)
+  };
+
+  var refreshData = function () {
+    // duplicate requests are resolved via a single promise
+    if (!trueUtility.isUndefinedOrNull(refreshDeferred)) {
+      return refreshDeferred.promise;
+    }
+
+    refreshDeferred = $q.defer();
+    resetVoatPageIndexes();
+
+    loadNextPicsPage().then(function (data) {
+      voatPosts = VoatPostBuilder.build(data);
+      refreshDeferred.resolve(getVoatPosts());
+      refreshDeferred = null;
     });
 
-    return deferred.promise;
+    return refreshDeferred.promise;
+  };
+
+  // should only expose voatPosts via this method
+  var getVoatPosts = function () {
+    return angular.copy(voatPosts); // deep copy
   };
 
   var loadMoreData = function () {
-    return loadInitialData();
+    // duplicate requests are resolved via a single promise
+    if (!trueUtility.isUndefinedOrNull(loadMoreDeferred)) {
+      return loadMoreDeferred.promise;
+    }
+
+    loadMoreDeferred = $q.defer();
+
+    $q.all([
+      loadNextPicsPage(),
+      loadNextGifsPage(),
+      loadNextAwwPage(),
+      loadNextFunnyPage()])
+      .then(function (res) {
+        var picsPosts = VoatPostBuilder.build(res[0]);
+        var gifsPosts = VoatPostBuilder.build(res[1]);
+        var awwPosts = VoatPostBuilder.build(res[2]);
+        var funnyPosts = VoatPostBuilder.build(res[3]);
+
+        var combinedPosts = picsPosts.concat(gifsPosts).concat(awwPosts).concat(funnyPosts);
+        var shuffledCombinedPosts = trueUtility.shuffle(combinedPosts);
+
+        if (angular.isArray(voatPosts)) {
+          voatPosts = voatPosts.concat(shuffledCombinedPosts);
+        } else {
+          voatPosts = shuffledCombinedPosts;
+        }
+
+        loadMoreDeferred.resolve(shuffledCombinedPosts);
+        loadMoreDeferred = null;
+      });//the error case is handled automatically
+
+    return loadMoreDeferred.promise;
   };
 
-
   return {
-    loadInitialData: loadInitialData,
-    loadMoreData: loadInitialData
+    getVoatPosts: getVoatPosts,
+    refreshData: refreshData,
+    loadMoreData: loadMoreData,
+
+    VOAT_PICS_URL: VOAT_PICS_URL,
+    VOAT_GIFS_URL: VOAT_GIFS_URL,
+    VOAT_AWW_URL: VOAT_AWW_URL,
+    VOAT_FUNNY_URL: VOAT_FUNNY_URL
   };
 });

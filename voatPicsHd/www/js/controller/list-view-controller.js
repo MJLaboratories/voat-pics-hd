@@ -19,7 +19,7 @@ module.controller('ListViewCtrl', function ($scope, $timeout, $ionicLoading, Voa
   };
 
   var initialiseData = function () {
-    VoatRepository.loadInitialData().then(function (voatPosts) {
+    VoatRepository.refreshData().then(function (voatPosts) {
       replaceVoatPosts(voatPosts);
       $scope.$broadcast('scroll.refreshComplete');
     });
@@ -28,7 +28,7 @@ module.controller('ListViewCtrl', function ($scope, $timeout, $ionicLoading, Voa
   $scope.loadMoreData = function () {
     VoatRepository.loadMoreData().then(function (voatPosts) {
       appendToVoatPosts(voatPosts);
-      $scope.$broadcast('scroll.refreshComplete');
+      $scope.$broadcast('scroll.infiniteScrollComplete');
     });
   };
 
@@ -44,8 +44,10 @@ module.controller('ListViewCtrl', function ($scope, $timeout, $ionicLoading, Voa
     $ionicLoading.hide();
   });
 
-  $scope.$on('$stateChangeSuccess', function () {
+  var init = function () {
     showLoadingSpinner();
     initialiseData();
-  });
+  };
+
+  init();
 });

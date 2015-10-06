@@ -5,10 +5,11 @@ describe('ListViewCtrl', function () {
     $q,
     $ionicLoading,
     mockVoatRepository,
-    mockScopeBroadcast,
+    scopeSpy,
     mockIonicLoading,
     mockDeferred,
-    mockPromise;
+    mockPromise,
+    stubData = [{id: 'id', title: 'title', link: 'link', image: 'image'}];
 
   beforeEach(module('ionic'));
   beforeEach(module('app.services'));
@@ -36,13 +37,14 @@ describe('ListViewCtrl', function () {
     };
 
     //create spy for the service being called so it is mocked out
-    mockVoatRepository = jasmine.createSpyObj('VoatRepository', ['loadInitialData', 'loadMoreData']);
+    mockVoatRepository = jasmine.createSpyObj('CloudFlareProtectedUrlLoader', ['refreshData', 'loadMoreData']);
     //setup the spy to always return the spyPromise for the entire test spec
-    mockVoatRepository.loadInitialData.and.returnValue(mockPromise);
+    mockVoatRepository.refreshData.and.returnValue(mockPromise);
     mockVoatRepository.loadMoreData.and.returnValue(mockPromise);
 
     // spy on events that are raised
-    mockScopeBroadcast = jasmine.createSpyObj('$scope', ['$broadcast']);
+    scopeSpy = spyOn($scope, '$broadcast');
+    scopeSpy.and.callThrough();
 
     //create spy for the service being called so it is mocked out
     mockIonicLoading = jasmine.createSpyObj('$ionicLoading', ['show', 'hide']);
@@ -53,30 +55,68 @@ describe('ListViewCtrl', function () {
       $ionicLoading: mockIonicLoading,
       VoatRepository: mockVoatRepository
     });
+
+    // because the constructor above starts work, we need to reset the state for most tests
+    // tests which test the constructor are in the 'when the app first loads' block below
+    mockDeferred.resolve(stubData);
+    $scope.$apply();
+    mockIonicLoading.show.calls.reset();
+    mockIonicLoading.hide.calls.reset();
+    mockVoatRepository.refreshData.calls.reset();
+    mockVoatRepository.loadMoreData.calls.reset();
   });
 
-
   describe('when the app first loads', function () {
+    beforeEach(function () {
+      controller = $controller('ListViewCtrl', {
+        $scope: $scope,
+        $timeout: $timeout,
+        $ionicLoading: mockIonicLoading,
+        VoatRepository: mockVoatRepository
+      });
+    });
 
-    it('should have initialised with an empty data array', function () {
+    it('voatPosts initialised with an empty array', function () {
       expect($scope.voatPosts).toEqual([]);
     });
 
-    it('data service should not have been called yet', function () {
-      expect(mockVoatRepository.loadInitialData).not.toHaveBeenCalled();
+    it('data call is made', function () {
+      expect(mockVoatRepository.refreshData).toHaveBeenCalled();
     });
 
-    describe('when the stateChangeEvent is fired', function () {
+    it('loading spinner is shown', function () {
+      expect(mockIonicLoading.show).toHaveBeenCalled();
+    });
+
+    describe('when the data call completes', function () {
       beforeEach(function () {
-        $scope.$broadcast('$stateChangeSuccess');
+        mockDeferred.resolve(stubData);
+        $scope.$apply();
       });
 
-      it('data call is made', function () {
-        expect(mockVoatRepository.loadInitialData).toHaveBeenCalled();
+      it('the result is stored', function () {
+        expect($scope.voatPosts).toEqual(stubData);
       });
 
-      it('loading spinner is shown', function () {
-        expect(mockIonicLoading.show).toHaveBeenCalled();
+      it('scroll.refreshComplete is broadcast', function () {
+        expect(scopeSpy).toHaveBeenCalledWith('scroll.refreshComplete');
+      });
+    });
+  });
+
+    describe('doRefresh', function () {
+      beforeEach(function () {
+        $scope.voatPosts = [{hello: 'hello'}];
+        $scope.doRefresh();
+        $timeout.flush();
+      });
+
+      it('initial data call is made', function () {
+        expect(mockVoatRepository.refreshData).toHaveBeenCalled();
+      });
+
+      it('loading spinner is NOT shown', function () {
+        expect(mockIonicLoading.show).not.toHaveBeenCalled();
       });
 
       describe('when the data call completes', function () {
@@ -87,86 +127,54 @@ describe('ListViewCtrl', function () {
           $scope.$apply();
         });
 
-        it('the result is stored', function () {
+        it('new data replaces existing data', function () {
           expect($scope.voatPosts).toEqual(stubData);
         });
+      });
+    });
 
-        it('scroll.refreshComplete is broadcast', function () {
-          expect(mockScopeBroadcast.$broadcast).toHaveBeenCalledWith('scroll.refreshComplete');
+    describe('loadMoreData', function () {
+      var initialData;
+
+      beforeEach(function () {
+        initialData = $scope.voatPosts;
+        $scope.loadMoreData();
+      });
+
+      it('more data call is made', function () {
+        expect(mockVoatRepository.loadMoreData).toHaveBeenCalled();
+      });
+
+      it('loading spinner is NOT shown', function () {
+        expect(mockIonicLoading.show).not.toHaveBeenCalled();
+      });
+
+      describe('when the data call completes', function () {
+        var stubData = [{id: 'id', title: 'title', link: 'link', image: 'image'}];
+
+        beforeEach(function () {
+          mockDeferred.resolve(stubData);
+          $scope.$apply();
+        });
+
+        it('new data is concatenated to existing data', function () {
+          var concatenatedData = initialData.concat(stubData);
+          expect($scope.voatPosts).toEqual(concatenatedData);
+        });
+
+        it('scroll.infiniteScrollComplete is broadcast', function () {
+          expect(scopeSpy).toHaveBeenCalledWith('scroll.infiniteScrollComplete');
         });
       });
     });
-  });
 
-  describe('when a manual refresh is triggered and data already exists', function () {
-    beforeEach(function () {
-      $scope.voatPosts = [{hello: 'hello'}];
-      $scope.doRefresh();
-      $timeout.flush();
-    });
-
-    it('initial data call is made', function () {
-      expect(mockVoatRepository.loadInitialData).toHaveBeenCalled();
-    });
-
-    it('loading spinner is NOT shown', function () {
-      expect(mockIonicLoading.show).not.toHaveBeenCalled();
-    });
-
-    describe('when the data call completes', function () {
-      var stubData = [{id: 'id', title: 'title', link: 'link', image: 'image'}];
-
+    describe('when scroll.refreshComplete is broadcast', function () {
       beforeEach(function () {
-        mockDeferred.resolve(stubData);
-        $scope.$apply();
+        $scope.$broadcast('scroll.refreshComplete');
       });
 
-      it('new data replaces existing data', function () {
-        expect($scope.voatPosts).toEqual(stubData);
+      it('the loading spinner is hidden', function () {
+        expect(mockIonicLoading.hide).toHaveBeenCalled();
       });
     });
-  });
-
-  describe('when load more is triggered and data already exists', function () {
-    var existingData = [{hello: 'hello'}];
-
-    beforeEach(function () {
-      $scope.voatPosts = existingData;
-      $scope.loadMoreData();
-    });
-
-    it('more data call is made', function () {
-      expect(mockVoatRepository.loadMoreData).toHaveBeenCalled();
-    });
-
-    it('loading spinner is NOT shown', function () {
-      expect(mockIonicLoading.show).not.toHaveBeenCalled();
-    });
-
-    describe('when the data call completes', function () {
-      var stubData = [{id: 'id', title: 'title', link: 'link', image: 'image'}];
-
-      beforeEach(function () {
-        mockDeferred.resolve(stubData);
-        $scope.$apply();
-      });
-
-      it('new data is concatenated to existing data', function () {
-        var concatenatedData = existingData.concat(stubData);
-        expect($scope.voatPosts).toEqual(concatenatedData);
-      });
-    });
-
-
-  });
-
-  describe('when scroll.refreshComplete is broadcast', function () {
-    beforeEach(function () {
-      $scope.$broadcast('scroll.refreshComplete');
-    });
-
-    it('the loading spinner is hidden', function () {
-      expect(mockIonicLoading.hide).toHaveBeenCalled();
-    });
-  });
 });

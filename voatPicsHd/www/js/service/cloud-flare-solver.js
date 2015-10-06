@@ -8,6 +8,8 @@ module.factory('CloudFlareSolver', function ($q, $http, $timeout) {
       && headers().refresh.indexOf('/cdn-cgi/l/chk_jschl') > -1;
   };
 
+  //TODO: fix cloud flare solver to work for any url
+
   var solveCloudFlareProtection = function (url, data, headers) {
     var deferred = $q.defer();
 

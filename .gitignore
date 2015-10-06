@@ -22,8 +22,11 @@ $RECYCLE.BIN/
 
 # Dynamically created files
 voatPicsHd/node_modules/
-voatPicsHd/www/lib/
-voatPicsHd/www/css/
+voatPicsHd/www/lib
+voatPicsHd/www/css
+
+voatPicsHd/platforms/ios
+voatPicsHd/platforms/android
 
 # =========================
 # Operating System Files

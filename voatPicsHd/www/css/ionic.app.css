@@ -7752,6 +7752,7 @@ a.button {
   margin-right: 39px; }
 
 .gallery-share-button {
+  color: white;
   position: absolute;
   right: 0;
   top: 0;

@@ -1,18 +1,10 @@
 var module = angular.module('app.controllers');
 module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxDelegate, $cacheFactory, $ionicScrollDelegate, $ionicNavBarDelegate, VoatRepository, $cordovaSocialSharing, $ionicPlatform) {
 
-  function findWithAttr(array, attr, value) {
-    for (var i = 0; i < array.length; i += 1) {
-      if (array[i][attr] == value) {
-        return i;
-      }
-    }
-  }
-
   $scope.minZoom = 1;
   $scope.showNavigation = true;
   $scope.showImageTitle = true;
-  var data = [];
+  var voatPosts = [];
   $scope.selectedSlide = 0;
 
   function getScrollDelegate() {
@@ -27,15 +19,15 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxD
 
     // sliding from right to left (swiping 'forward')
     if ($scope.slides[leftSlideIndex].index < $scope.slides[centreSlideIndex].index) {
-      // slide to the right contains data with lowest id, replace it with one higher than the current slide
-      angular.copy(data[$scope.slides[centreSlideIndex].index + 1], $scope.slides[rightSlideIndex])
+      // slide to the right contains voatPosts with lowest id, replace it with one higher than the current slide
+      angular.copy(voatPosts[$scope.slides[centreSlideIndex].index + 1], $scope.slides[rightSlideIndex])
     } else {
       // opposite of above
-      angular.copy(data[$scope.slides[centreSlideIndex].index - 1], $scope.slides[leftSlideIndex])
+      angular.copy(voatPosts[$scope.slides[centreSlideIndex].index - 1], $scope.slides[leftSlideIndex])
     }
 
     // prevent looping when end reached
-    if ($scope.slides[centreSlideIndex].index === 0 || $scope.slides[centreSlideIndex].index === data.length - 1) {
+    if ($scope.slides[centreSlideIndex].index === 0 || $scope.slides[centreSlideIndex].index === voatPosts.length - 1) {
       $ionicSlideBoxDelegate.$getByHandle('slideshow-slidebox')._instances[0].loop(false);
     } else {
       $ionicSlideBoxDelegate.$getByHandle('slideshow-slidebox')._instances[0].loop(true);
@@ -91,13 +83,12 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxD
   }
 
   function init() {
-    var httpCache = $cacheFactory.get('voatPosts');
-    data = httpCache.get('voatPosts');
+    voatPosts = VoatRepository.getVoatPosts();
 
-    applyIndexesTo(data); // slider requires images have sequenced indexes
+    applyIndexesTo(voatPosts); // slider requires images have sequenced indexes
 
     var selectedSlideId = $stateParams.id;
-    var selectedSlideIndex = findWithAttr(data, 'id', selectedSlideId);
+    var selectedSlideIndex = trueUtility.findWithAttr(voatPosts, 'id', selectedSlideId);
     var initialSlides;
 
     if (trueUtility.isUndefinedOrNull(selectedSlideIndex)) {
@@ -108,33 +99,25 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxD
     // three cases to consider
     // initial slide is first
     if (selectedSlideIndex === 0) {
-      initialSlides = [angular.copy(data[0]), angular.copy(data[1]), angular.copy(data[2])];
+      initialSlides = [angular.copy(voatPosts[0]), angular.copy(voatPosts[1]), angular.copy(voatPosts[2])];
       $scope.selectedSlide = 0;
     }
     // initial slide is last
-    else if (selectedSlideIndex === data.length - 1) {
-      initialSlides = [angular.copy(data[data.length - 3]), angular.copy(data[data.length - 2]), angular.copy(data[data.length - 1])];
+    else if (selectedSlideIndex === voatPosts.length - 1) {
+      initialSlides = [angular.copy(voatPosts[voatPosts.length - 3]), angular.copy(voatPosts[voatPosts.length - 2]), angular.copy(voatPosts[voatPosts.length - 1])];
       $scope.selectedSlide = 2;
     }
     // default
     else {
-      initialSlides = [angular.copy(data[selectedSlideIndex - 1]), angular.copy(data[selectedSlideIndex]), angular.copy(data[selectedSlideIndex + 1])];
+      initialSlides = [angular.copy(voatPosts[selectedSlideIndex - 1]), angular.copy(voatPosts[selectedSlideIndex]), angular.copy(voatPosts[selectedSlideIndex + 1])];
       $scope.selectedSlide = 1;
     }
 
     $scope.slides = initialSlides;
+
   }
 
   init();
-
-  $scope.doShare = function () {
-
-    $ionicPlatform.ready(function() {
-      $cordovaSocialSharing.shareViaWhatsApp("message", data[0].link, "title");
-    });
-
-
-  };
 });
 
 

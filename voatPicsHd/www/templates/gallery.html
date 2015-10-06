@@ -7,7 +7,6 @@
     does-continue="true"
     class="full-size">
     <ion-slide ng-repeat="slide in slides">
-
       <ion-scroll direction="xy"
                   zooming="true"
                   min-zoom="{{minZoom}}"
@@ -17,9 +16,8 @@
                   delegate-handle="scrollHandle-{{$index}}"
                   on-scroll="updateSlideStatus(selectedSlide)"
                   on-release="updateSlideStatus(selectedSlide)">
-
-        <div class="image" style="background-image: url( {{slide.link}} )"></div>
-        <!--<img class="" ng-src="{{slide.link}}">-->
+        <!--<div class="image" style="background-image: url( {{slide.link}} )"></div>-->
+        <img id="slide-image-{{$index}}" class="contain-content" ng-src="{{slide.link}}">
       </ion-scroll>
 
       <div class="gallery-title-container" ng-show="showImageTitle">
