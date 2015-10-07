@@ -1,4 +1,4 @@
-angular.module('app', ['ionic', 'app.controllers', 'app.services', 'ngCordova', 'ionic-material'])
+angular.module('app', ['ngIOS9UIWebViewPatch','ionic', 'app.controllers', 'app.services', 'ngCordova', 'ionic-material'])
 
   .run(function ($ionicPlatform, ionicMaterialInk) {
     $ionicPlatform.ready(function () {
