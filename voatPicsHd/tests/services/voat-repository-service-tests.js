@@ -56,9 +56,9 @@ describe('VoatRepository', function () {
     describe('when no data has yet been fetched it', function () {
       var result;
 
-      it('returns null', function () {
+      it('returns an empty array', function () {
         result = VoatRepository.getVoatPosts();
-        expect(result).toBeNull();
+        expect(result).toEqual([]);
       });
 
       it('does NOT make a call for data', function () {
@@ -71,9 +71,9 @@ describe('VoatRepository', function () {
         VoatRepository.refreshData();
       });
 
-      it('immediately returns null', function () {
+      it('immediately returns an empty array', function () {
         result = VoatRepository.getVoatPosts();
-        expect(result).toBeNull();
+        expect(result).toEqual([]);
       });
     });
 

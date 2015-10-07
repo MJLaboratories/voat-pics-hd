@@ -1,31 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/voatPicsHd/www/js/true-utility.js" line="57" mnemonic="9" />
+    <bookmark url="file://$PROJECT_DIR$/voatPicsHd/www/js/other/true-utility.js" line="57" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5a3a3ad-4df6-4835-aba0-012e7af2e122" name="Default" comment="Fixing app after refactoring for tests.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/voatPicsHd/tests/services/voat-repository-service-tests.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/voatPicsHd/tests/controllers/gallery-controller-tests.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/Jimmy.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Jimmy.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/www/js/service/cloud-flare-solver.js" afterPath="$PROJECT_DIR$/voatPicsHd/www/js/service/cloud-flare-solver.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/www/js/controller/gallery-controller.js" afterPath="$PROJECT_DIR$/voatPicsHd/www/js/controller/gallery-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/www/templates/gallery.html" afterPath="$PROJECT_DIR$/voatPicsHd/www/templates/gallery.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/www/index.html" afterPath="$PROJECT_DIR$/voatPicsHd/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/www/css/ionic.app.css" afterPath="$PROJECT_DIR$/voatPicsHd/www/css/ionic.app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/www/css/ionic.app.min.css" afterPath="$PROJECT_DIR$/voatPicsHd/www/css/ionic.app.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/scss/ionic.app.scss" afterPath="$PROJECT_DIR$/voatPicsHd/scss/ionic.app.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/ionic.project" afterPath="$PROJECT_DIR$/voatPicsHd/ionic.project" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/tests/controllers/list-view-controller-tests.js" afterPath="$PROJECT_DIR$/voatPicsHd/tests/controllers/list-view-controller-tests.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/www/js/controller/list-view-controller.js" afterPath="$PROJECT_DIR$/voatPicsHd/www/js/controller/list-view-controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/www/templates/list-view.html" afterPath="$PROJECT_DIR$/voatPicsHd/www/templates/list-view.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/tests/my.conf.js" afterPath="$PROJECT_DIR$/voatPicsHd/tests/my.conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/package.json" afterPath="$PROJECT_DIR$/voatPicsHd/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/tests/true-utility-tests.js" afterPath="$PROJECT_DIR$/voatPicsHd/tests/true-utility-tests.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/www/js/true-utility.js" afterPath="$PROJECT_DIR$/voatPicsHd/www/js/true-utility.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/tests/services/voat-repository-service-tests.js" afterPath="$PROJECT_DIR$/voatPicsHd/tests/services/voat-repository-service-tests.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voatPicsHd/www/js/service/voat-repository-service.js" afterPath="$PROJECT_DIR$/voatPicsHd/www/js/service/voat-repository-service.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\Documents\github\voat-pics-hd\voatPicsHd\tests\true-utility-tests.js" afterPath="$PROJECT_DIR$/voatPicsHd/tests/other/true-utility-tests.js" />
+      <change type="MOVED" beforePath="D:\Documents\github\voat-pics-hd\voatPicsHd\www\js\true-utility.js" afterPath="$PROJECT_DIR$/voatPicsHd/www/js/other/true-utility.js" />
     </list>
     <ignored path="voat-pics-hd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,28 +42,26 @@
               <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/service/voat-repository-service.js">
                 <provider selected="true" editor-type-id="text-editor">
                   <state vertical-scroll-proportion="0.0">
-                    <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-                    <folding>
-                      <marker date="1444137890218" expanded="true" signature="164:3662" placeholder="{...}" />
-                    </folding>
+                    <caret line="109" column="4" selection-start-line="109" selection-start-column="4" selection-end-line="109" selection-end-column="4" />
+                    <folding />
                   </state>
                 </provider>
               </entry>
             </file>
             <file leaf-file-name="true-utility-tests.js" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/true-utility-tests.js">
+              <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/other/true-utility-tests.js">
                 <provider selected="true" editor-type-id="text-editor">
                   <state vertical-scroll-proportion="0.0">
                     <caret line="199" column="5" selection-start-line="199" selection-start-column="5" selection-end-line="199" selection-end-column="5" />
                     <folding>
-                      <element signature="e#4410#5819#0" expanded="false" />
+                      <element signature="e#236#1967#0" expanded="false" />
                     </folding>
                   </state>
                 </provider>
               </entry>
             </file>
             <file leaf-file-name="true-utility.js" pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/true-utility.js">
+              <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/other/true-utility.js">
                 <provider selected="true" editor-type-id="text-editor">
                   <state vertical-scroll-proportion="0.0">
                     <caret line="50" column="3" selection-start-line="50" selection-start-column="3" selection-end-line="50" selection-end-column="3" />
@@ -89,10 +80,10 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="list-view.html" pinned="false" current-in-tab="true">
+            <file leaf-file-name="list-view.html" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/voatPicsHd/www/templates/list-view.html">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.23101519">
+                  <state vertical-scroll-proportion="0.0">
                     <caret line="17" column="93" selection-start-line="17" selection-start-column="93" selection-end-line="17" selection-end-column="93" />
                     <folding />
                   </state>
@@ -103,19 +94,17 @@
               <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/controller/list-view-controller.js">
                 <provider selected="true" editor-type-id="text-editor">
                   <state vertical-scroll-proportion="0.0">
-                    <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
-                    <folding>
-                      <marker date="1444138915851" expanded="true" signature="1011:1075" placeholder="{...}" />
-                    </folding>
+                    <caret line="28" column="53" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+                    <folding />
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="gallery-controller.js" pinned="false" current-in-tab="false">
+            <file leaf-file-name="gallery-controller.js" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/controller/gallery-controller.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.0">
-                    <caret line="41" column="56" selection-start-line="41" selection-start-column="56" selection-end-line="41" selection-end-column="56" />
+                  <state vertical-scroll-proportion="-0.2513704">
+                    <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
                     <folding />
                   </state>
                 </provider>
@@ -132,21 +121,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="list-view-controller-tests.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="list-view-controller-tests.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/controllers/list-view-controller-tests.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19927536">
-              <caret line="59" column="89" selection-start-line="59" selection-start-column="89" selection-end-line="59" selection-end-column="89" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="angular.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/voatPicsHd/www/lib/angular/angular.js">
+      <file leaf-file-name="true-utility-tests.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/other/true-utility-tests.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14760" column="0" selection-start-line="14760" selection-start-column="0" selection-end-line="14760" selection-end-column="0" />
+              <caret line="199" column="5" selection-start-line="199" selection-start-column="5" selection-end-line="199" selection-end-column="5" />
+              <folding>
+                <element signature="e#236#1967#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gallery-controller-tests.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/controllers/gallery-controller-tests.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.35386473">
+              <caret line="303" column="36" selection-start-line="303" selection-start-column="36" selection-end-line="303" selection-end-column="36" />
+              <folding>
+                <element signature="e#373#738#0" expanded="false" />
+                <element signature="e#740#1102#0" expanded="false" />
+                <element signature="e#1104#1483#0" expanded="false" />
+                <element signature="e#1485#1870#0" expanded="false" />
+                <element signature="e#1872#2228#0" expanded="false" />
+                <element signature="e#2230#2610#0" expanded="false" />
+                <element signature="e#2612#3101#0" expanded="false" />
+                <element signature="e#3103#3485#0" expanded="false" />
+                <element signature="e#3487#3858#0" expanded="false" />
+                <element signature="e#3860#4291#0" expanded="false" />
+                <element signature="e#4293#4643#0" expanded="false" />
+                <element signature="e#4645#5043#0" expanded="false" />
+                <element signature="e#5045#5406#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ionic.bundle.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/voatPicsHd/www/lib/ionic/js/ionic.bundle.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8559" column="0" selection-start-line="8559" selection-start-column="0" selection-end-line="8559" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -156,42 +181,11 @@
         <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/services/voat-repository-service-tests.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="193" column="24" selection-start-line="193" selection-start-column="24" selection-end-line="193" selection-end-column="24" />
+              <caret line="362" column="8" selection-start-line="362" selection-start-column="8" selection-end-line="362" selection-end-column="24" />
               <folding>
-                <element signature="e#9198#9696#0" expanded="false" />
-                <element signature="e#9779#10040#0" expanded="false" />
-                <element signature="e#10107#11405#0" expanded="false" />
+                <element signature="e#9220#9718#0" expanded="false" />
+                <element signature="e#9801#10062#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/voatPicsHd/node_modules/jasmine-collection-matchers/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my.conf.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/my.conf.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="59" selection-start-line="17" selection-start-column="59" selection-end-line="17" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="toHaveLength.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/voatPicsHd/node_modules/jasmine-collection-matchers/src/toHaveLength.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -200,27 +194,7 @@
         <entry file="file://$PROJECT_DIR$/voatPicsHd/www/lib/angular-mocks/angular-mocks.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="2289" column="0" selection-start-line="2289" selection-start-column="0" selection-end-line="2289" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cloud-flare-protected-url-loader.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/service/cloud-flare-protected-url-loader.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cloud-flare-solver.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/service/cloud-flare-solver.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+              <caret line="1881" column="0" selection-start-line="1881" selection-start-column="0" selection-end-line="1881" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -260,15 +234,16 @@
         <option value="$PROJECT_DIR$/voatPicsHd/scss/ionic.app.scss" />
         <option value="$PROJECT_DIR$/voatPicsHd/www/index.html" />
         <option value="$PROJECT_DIR$/voatPicsHd/www/js/service/cloud-flare-solver.js" />
-        <option value="$PROJECT_DIR$/voatPicsHd/tests/my.conf.js" />
-        <option value="$PROJECT_DIR$/voatPicsHd/www/js/controller/gallery-controller.js" />
         <option value="$PROJECT_DIR$/voatPicsHd/tests/true-utility-tests.js" />
         <option value="$PROJECT_DIR$/voatPicsHd/www/js/true-utility.js" />
+        <option value="$PROJECT_DIR$/voatPicsHd/www/templates/list-view.html" />
+        <option value="$PROJECT_DIR$/voatPicsHd/tests/controllers/list-view-controller-tests.js" />
+        <option value="$PROJECT_DIR$/voatPicsHd/www/js/controller/list-view-controller.js" />
         <option value="$PROJECT_DIR$/voatPicsHd/www/js/service/voat-repository-service.js" />
         <option value="$PROJECT_DIR$/voatPicsHd/tests/services/voat-repository-service-tests.js" />
-        <option value="$PROJECT_DIR$/voatPicsHd/www/js/controller/list-view-controller.js" />
-        <option value="$PROJECT_DIR$/voatPicsHd/tests/controllers/list-view-controller-tests.js" />
-        <option value="$PROJECT_DIR$/voatPicsHd/www/templates/list-view.html" />
+        <option value="$PROJECT_DIR$/voatPicsHd/tests/my.conf.js" />
+        <option value="$PROJECT_DIR$/voatPicsHd/www/js/controller/gallery-controller.js" />
+        <option value="$PROJECT_DIR$/voatPicsHd/tests/controllers/gallery-controller-tests.js" />
       </list>
     </option>
   </component>
@@ -309,6 +284,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -426,6 +402,88 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="underscore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voat-pics-hd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voat-pics-hd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voatPicsHd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ionic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voat-pics-hd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voat-pics-hd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voatPicsHd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ionic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voat-pics-hd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voat-pics-hd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voatPicsHd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="angular" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -500,7 +558,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
+              <option name="myItemId" value="other" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -610,6 +668,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="other" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voat-pics-hd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voat-pics-hd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voatPicsHd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -650,7 +730,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="jasmine-collection-matchers" />
+              <option name="myItemId" value="jasmine-core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -672,17 +752,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="jasmine-collection-matchers" />
+              <option name="myItemId" value="jasmine-core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voat-pics-hd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voat-pics-hd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="voatPicsHd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jasmine-core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jasmine-core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -692,7 +801,7 @@
     <property name="FullScreen" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="editor.config.accepted" value="true" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="411" />
@@ -716,6 +825,10 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Documents\github\voat-pics-hd\voatPicsHd\tests\services" />
       <recent name="D:\Documents\github\voat-pics-hd\voatPicsHd\www\js\service" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Documents\github\voat-pics-hd\voatPicsHd\tests\other" />
+      <recent name="D:\Documents\github\voat-pics-hd\voatPicsHd\www\js\other" />
     </key>
   </component>
   <component name="RunManager" selected="Karma.my.conf.js">
@@ -819,22 +932,22 @@
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29351267" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32997677" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32788163" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32923076" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33021808" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33021808" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943925" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39719626" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47507787" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32788163" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -885,19 +998,27 @@
           <line>23</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/voatPicsHd/tests/controllers/gallery-controller-tests.js</url>
+          <line>365</line>
+          <option name="timeStamp" value="96" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="46" />
+      <option name="time" value="97" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="JavaScriptTestRunnerKarma">
+        <watch expression="$scope.slides[0].id" language="JavaScript" />
+        <watch expression="$scope.slides[1].id" language="JavaScript" />
+        <watch expression="newVoatPosts[0].id" language="JavaScript" />
+        <watch expression="$scope.slides" language="JavaScript" />
+        <watch expression="stubData.concat(newVoatPosts)" language="JavaScript" />
+        <watch expression="newVoatPosts" language="JavaScript" />
+        <watch expression="$scope.selectedSlide" language="JavaScript" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/my.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1029,13 +1150,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/lib/ionic/js/ionic.bundle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33281127">
-          <caret line="9383" column="9" selection-start-line="9383" selection-start-column="9" selection-end-line="9383" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/voatPicsHd/node_modules/gulp-concat/node_modules/gulp-util/node_modules/vinyl/node_modules/clone/test.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.615385">
@@ -1064,13 +1178,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/service/voat-scraper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/service/url-extension-service.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1082,17 +1189,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/templates/gallery.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#ion-scroll#0;n#ion-slide#0;n#ion-slide-box#0;n#ion-view#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1108,7 +1204,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1116,15 +1211,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/service/cloud-flare-solver.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1132,23 +1218,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/lib/angular-mocks/angular-mocks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2289" column="0" selection-start-line="2289" selection-start-column="0" selection-end-line="2289" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voatPicsHd/node_modules/jasmine-core/lib/jasmine-core/jasmine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3328841">
-          <caret line="188" column="8" selection-start-line="188" selection-start-column="8" selection-end-line="188" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1156,15 +1225,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/my.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="59" selection-start-line="17" selection-start-column="59" selection-end-line="17" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1176,11 +1236,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/lib/angular/angular.js">
+    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/service/voat-scraper.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14760" column="0" selection-start-line="14760" selection-start-column="0" selection-end-line="14760" selection-end-column="0" />
+          <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/lib/angular-mocks/angular-mocks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1881" column="0" selection-start-line="1881" selection-start-column="0" selection-end-line="1881" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/service/cloud-flare-solver.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20506634">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -1192,17 +1267,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/true-utility-tests.js">
+    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/templates/list-view.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="199" column="5" selection-start-line="199" selection-start-column="5" selection-end-line="199" selection-end-column="5" />
-          <folding>
-            <element signature="e#4410#5819#0" expanded="false" />
-          </folding>
+          <caret line="17" column="93" selection-start-line="17" selection-start-column="93" selection-end-line="17" selection-end-column="93" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/true-utility.js">
+    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/other/true-utility.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="50" column="3" selection-start-line="50" selection-start-column="3" selection-end-line="50" selection-end-column="3" />
@@ -1210,40 +1283,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/service/voat-repository-service.js">
+    <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/my.conf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <marker date="1444137890218" expanded="true" signature="164:3662" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/controller/gallery-controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="56" selection-start-line="41" selection-start-column="56" selection-end-line="41" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/services/voat-repository-service-tests.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="193" column="24" selection-start-line="193" selection-start-column="24" selection-end-line="193" selection-end-column="24" />
-          <folding>
-            <element signature="e#9198#9696#0" expanded="false" />
-            <element signature="e#9779#10040#0" expanded="false" />
-            <element signature="e#10107#11405#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/controllers/list-view-controller-tests.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19927536">
-          <caret line="59" column="89" selection-start-line="59" selection-start-column="89" selection-end-line="59" selection-end-column="89" />
+          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -1251,18 +1294,107 @@
     <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/controller/list-view-controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+          <caret line="28" column="53" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/controllers/list-view-controller-tests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/lib/angular/angular.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29830918">
+          <caret line="14795" column="10" selection-start-line="14795" selection-start-column="10" selection-end-line="14795" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/other/true-utility-tests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="199" column="5" selection-start-line="199" selection-start-column="5" selection-end-line="199" selection-end-column="5" />
           <folding>
-            <marker date="1444138915851" expanded="true" signature="1011:1075" placeholder="{...}" />
+            <element signature="e#236#1967#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/templates/list-view.html">
+    <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/services/voat-repository-service-tests.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23101519">
-          <caret line="17" column="93" selection-start-line="17" selection-start-column="93" selection-end-line="17" selection-end-column="93" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="362" column="8" selection-start-line="362" selection-start-column="8" selection-end-line="362" selection-end-column="24" />
+          <folding>
+            <element signature="e#9220#9718#0" expanded="false" />
+            <element signature="e#9801#10062#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/service/voat-repository-service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="109" column="4" selection-start-line="109" selection-start-column="4" selection-end-line="109" selection-end-column="4" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/lib/ionic/js/ionic.bundle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8559" column="0" selection-start-line="8559" selection-start-column="0" selection-end-line="8559" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voatPicsHd/node_modules/jasmine-core/lib/jasmine-core/jasmine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37274864">
+          <caret line="1793" column="0" selection-start-line="1793" selection-start-column="0" selection-end-line="1793" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/templates/gallery.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10871303">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voatPicsHd/www/js/controller/gallery-controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.2513704">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voatPicsHd/tests/controllers/gallery-controller-tests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35386473">
+          <caret line="303" column="36" selection-start-line="303" selection-start-column="36" selection-end-line="303" selection-end-column="36" />
+          <folding>
+            <element signature="e#373#738#0" expanded="false" />
+            <element signature="e#740#1102#0" expanded="false" />
+            <element signature="e#1104#1483#0" expanded="false" />
+            <element signature="e#1485#1870#0" expanded="false" />
+            <element signature="e#1872#2228#0" expanded="false" />
+            <element signature="e#2230#2610#0" expanded="false" />
+            <element signature="e#2612#3101#0" expanded="false" />
+            <element signature="e#3103#3485#0" expanded="false" />
+            <element signature="e#3487#3858#0" expanded="false" />
+            <element signature="e#3860#4291#0" expanded="false" />
+            <element signature="e#4293#4643#0" expanded="false" />
+            <element signature="e#4645#5043#0" expanded="false" />
+            <element signature="e#5045#5406#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

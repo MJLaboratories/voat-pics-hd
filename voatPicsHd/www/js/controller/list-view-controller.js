@@ -26,8 +26,8 @@ module.controller('ListViewCtrl', function ($scope, $timeout, $ionicLoading, Voa
   };
 
   $scope.loadMoreData = function () {
-    VoatRepository.loadMoreData().then(function (voatPosts) {
-      appendToVoatPosts(voatPosts);
+    VoatRepository.loadMoreData().then(function (newVoatPosts) {
+      appendToVoatPosts(newVoatPosts);
       $scope.$broadcast('scroll.infiniteScrollComplete');
     });
   };

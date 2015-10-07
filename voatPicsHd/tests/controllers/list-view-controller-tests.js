@@ -37,7 +37,7 @@ describe('ListViewCtrl', function () {
     };
 
     //create spy for the service being called so it is mocked out
-    mockVoatRepository = jasmine.createSpyObj('CloudFlareProtectedUrlLoader', ['refreshData', 'loadMoreData']);
+    mockVoatRepository = jasmine.createSpyObj('VoatRepository', ['refreshData', 'loadMoreData']);
     //setup the spy to always return the spyPromise for the entire test spec
     mockVoatRepository.refreshData.and.returnValue(mockPromise);
     mockVoatRepository.loadMoreData.and.returnValue(mockPromise);

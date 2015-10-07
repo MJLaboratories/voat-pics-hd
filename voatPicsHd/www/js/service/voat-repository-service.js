@@ -5,7 +5,7 @@ module.factory('VoatRepository', function ($q, VoatPost, $cacheFactory, CloudFla
   var VOAT_AWW_URL = 'https://voat.co/v/aww/';
   var VOAT_FUNNY_URL = 'https://voat.co/v/funny/';
 
-  var voatPosts = null;
+  var voatPosts = [];
   var refreshDeferred = null;
   var loadMoreDeferred = null;
 
@@ -88,23 +88,20 @@ module.factory('VoatRepository', function ($q, VoatPost, $cacheFactory, CloudFla
       loadNextAwwPage(),
       loadNextFunnyPage()])
       .then(function (res) {
-        var picsPosts = VoatPostBuilder.build(res[0]);
-        var gifsPosts = VoatPostBuilder.build(res[1]);
-        var awwPosts = VoatPostBuilder.build(res[2]);
-        var funnyPosts = VoatPostBuilder.build(res[3]);
+        var newPicsPosts = VoatPostBuilder.build(res[0]);
+        var newGifsPosts = VoatPostBuilder.build(res[1]);
+        var newAwwPosts = VoatPostBuilder.build(res[2]);
+        var newFunnyPosts = VoatPostBuilder.build(res[3]);
 
-        var combinedPosts = picsPosts.concat(gifsPosts).concat(awwPosts).concat(funnyPosts);
-        var shuffledCombinedPosts = trueUtility.shuffle(combinedPosts);
+        var newPostsCombined = newPicsPosts.concat(newGifsPosts).concat(newAwwPosts).concat(newFunnyPosts);
+        var newPostsCombinedAndShuffled = trueUtility.shuffle(newPostsCombined);
 
-        if (angular.isArray(voatPosts)) {
-          voatPosts = voatPosts.concat(shuffledCombinedPosts);
-        } else {
-          voatPosts = shuffledCombinedPosts;
-        }
+        voatPosts = voatPosts.concat(newPostsCombinedAndShuffled);
 
-        loadMoreDeferred.resolve(shuffledCombinedPosts);
+        loadMoreDeferred.resolve(newPostsCombinedAndShuffled);
         loadMoreDeferred = null;
       });//the error case is handled automatically
+    // don't know what the above comment means
 
     return loadMoreDeferred.promise;
   };
