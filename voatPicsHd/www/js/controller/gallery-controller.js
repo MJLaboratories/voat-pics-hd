@@ -1,4 +1,5 @@
 var module = angular.module('app.controllers');
+
 module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxDelegate, $ionicScrollDelegate, $ionicNavBarDelegate, VoatRepository) {
   var REMAINING_SLIDES_TRIGGER_PRELOAD_COUNT = 10;
   $scope.minZoom = 1;
@@ -62,13 +63,12 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxD
     getCurrentSlideScrollDelegate().resize();
   };
 
-  var toggleImageOnly = function () {
-    $scope.showNavigation = !$scope.showNavigation;
+  $scope.toggleImageOnly = function () {
     $scope.showImageTitle = !$scope.showImageTitle;
     $ionicNavBarDelegate.showBar($scope.showNavigation);
   };
 
-  var toggleZoom = function () {
+  $scope.toggleZoom = function () {
     var scrollDelegate = getCurrentSlideScrollDelegate();
     var currentZoomLevel = scrollDelegate.getScrollPosition().zoom;
 
@@ -81,11 +81,6 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxD
     }
 
     scrollDelegate.resize();
-  };
-
-  $scope.toggleZoomFocusMode = function () {
-    toggleZoom();
-    toggleImageOnly();
   };
 
   $scope.updateSlideStatus = function (activeSlideIndex) {
