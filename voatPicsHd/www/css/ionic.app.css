@@ -9290,6 +9290,10 @@ a.button {
 .post-thumbnail {
   border-radius: 5px !important; }
 
+.item-content.activated {
+  border-color: transparent !important;
+  background-color: transparent !important; }
+
 .header-item {
   text-align: center !important;
   left: 0px !important;
