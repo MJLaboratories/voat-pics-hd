@@ -27,6 +27,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   border-radius: 5px !important;
 }
 
+.item-content.activated{
+  border-color: transparent !important;
+  background-color: transparent !important;
+}
+
 // Custom styling
 
 .header-item {

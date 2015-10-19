@@ -2,7 +2,7 @@ var module = angular.module('app.services');
 module.factory('UrlExtensionService', function () {
   var isValidExtension = function ext(url) {
     var extension = getExtension(url);
-    if (extension == ".gifv") {
+    if (extension === ".gifv" || extension ==='.html') {
       return false;
     }
     return extension.charAt(0) === ".";
