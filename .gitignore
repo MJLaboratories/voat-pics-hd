@@ -2,8 +2,8 @@
 Thumbs.db
 ehthumbs.db
 
-# .idea files
-**/.idea/workspace.xml
+# .idea IDE files
+.idea/**
 
 # Folder config file
 Desktop.ini
@@ -22,11 +22,12 @@ $RECYCLE.BIN/
 
 # Dynamically created files
 voatPicsHd/node_modules/
-voatPicsHd/www/lib
-voatPicsHd/www/css
+voatPicsHd/www/lib/**
+voatPicsHd/www/css/**
+voatPicsHd/.idea/**
 
-voatPicsHd/platforms/ios
-voatPicsHd/platforms/android
+voatPicsHd/platforms/ios/**
+voatPicsHd/platforms/android/**
 
 # =========================
 # Operating System Files

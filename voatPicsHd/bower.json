@@ -15,6 +15,7 @@
     "jquery": "~2.1.4",
     "ngCordova": "~0.1.20-alpha",
     "underscore": "~1.8.3",
-    "ionic-material": "~0.4.2"
+    "ionic-material": "~0.4.2",
+    "qlimit": "git://github.com/suprememoocow/qlimit.git#~0.1.1"
   }
 }

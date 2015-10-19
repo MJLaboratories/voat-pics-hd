@@ -1,16 +1,16 @@
 var module = angular.module('app.controllers');
-module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxDelegate, $ionicScrollDelegate, $ionicNavBarDelegate, VoatRepository) {
-  var REMAINING_SLIDES_TRIGGER_PRELOAD_COUNT = 10;
-  $scope.minZoom = 1;
-  $scope.showNavigation = true;
-  $scope.showImageTitle = true;
+module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxDelegate, $ionicScrollDelegate, $ionicNavBarDelegate, VoatRepository, $timeout) {
   var voatPosts = [];
+  $scope.MIN_ZOOM = 1;
   $scope.selectedSlide = 0;
-  var isLoadingMoreData = false;
 
   function getCurrentSlideScrollDelegate() {
     return $ionicScrollDelegate.$getByHandle('scrollHandle-' + $scope.selectedSlide);
   }
+
+  var getSlideBoxDelegate = function () {
+    return $ionicSlideBoxDelegate.$getByHandle('slideshow-slidebox')._instances[0];
+  };
 
   function applyIndexesTo(data) {
     for (var i = 0; i < data.length; i++) {
@@ -18,27 +18,32 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxD
     }
   }
 
-  var addToVoatPosts = function (newVoatPosts) {
+  var appendNewVoatPosts = function (newVoatPosts) {
     var tempVoatPosts = voatPosts.concat(newVoatPosts);
-    applyIndexesTo(tempVoatPosts); // infinite slider requires an index on the data
+    applyIndexesTo(tempVoatPosts); // infinite slider requires an ordinal index on the data
     voatPosts = tempVoatPosts;
   };
 
+  var REMAINING_SLIDES_TRIGGER_PRELOAD_COUNT = 10;
   var withinTenSlidesOfTheEnd = function (index) {
     return index > ((voatPosts.length - 1) - REMAINING_SLIDES_TRIGGER_PRELOAD_COUNT);
   };
 
-  $scope.slideHasChanged = function (centreSlideIndex) {
-    var centreSlideDataIndex = $scope.slides[centreSlideIndex].infiniteScrollDataIndex;
-    if (withinTenSlidesOfTheEnd(centreSlideDataIndex) && !isLoadingMoreData) {
-      isLoadingMoreData = true;
+  var shouldLoadMoreData = function (index) {
+    return withinTenSlidesOfTheEnd(index) && !isCurrentlyLoadingMoreData;
+  };
 
-      VoatRepository.loadMoreData().then(function (newVoatPosts) {
-        isLoadingMoreData = false;
-        addToVoatPosts(newVoatPosts);
-      });
-    }
+  var isCurrentlyLoadingMoreData = false;
+  var loadMoreData = function () {
+    isCurrentlyLoadingMoreData = true;
 
+    VoatRepository.loadMoreData().then(function (newVoatPosts) {
+      isCurrentlyLoadingMoreData = false;
+      appendNewVoatPosts(newVoatPosts);
+    });
+  };
+
+  var updateSlidePositions = function (centreSlideIndex) {
     var leftSlideIndex = centreSlideIndex === 0 ? 2 : centreSlideIndex - 1,
       rightSlideIndex = centreSlideIndex === 2 ? 0 : centreSlideIndex + 1;
 
@@ -50,42 +55,91 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxD
       // opposite of above
       angular.copy(voatPosts[$scope.slides[centreSlideIndex].infiniteScrollDataIndex - 1], $scope.slides[leftSlideIndex])
     }
+  };
 
-    // prevent looping when end reached
-    // TODO: fix the bug with not detecting the end if the number of slides % 2 != 0
-    if ($scope.slides[centreSlideIndex].infiniteScrollDataIndex === 0 || $scope.slides[centreSlideIndex].infiniteScrollDataIndex === voatPosts.length - 1) {
-      $ionicSlideBoxDelegate.$getByHandle('slideshow-slidebox')._instances[0].loop(false);
-    } else {
-      $ionicSlideBoxDelegate.$getByHandle('slideshow-slidebox')._instances[0].loop(true);
+  var preventSwipingPastEndSlide = function (currentSlideDataIndex) {
+    var isEndSlide = currentSlideDataIndex === 0 || currentSlideDataIndex === voatPosts.length - 1;
+    var enableSlideLooping = !isEndSlide;
+    getSlideBoxDelegate().loop(enableSlideLooping);
+  };
+
+  $scope.slideHasChanged = function (centreSlideIndex) {
+    var centreSlideDataIndex = $scope.slides[centreSlideIndex].infiniteScrollDataIndex;
+
+    if (shouldLoadMoreData(centreSlideDataIndex)) {
+      loadMoreData();
     }
 
+    updateSlidePositions(centreSlideIndex);
+    preventSwipingPastEndSlide(centreSlideDataIndex);
     getCurrentSlideScrollDelegate().resize();
   };
 
-  var toggleImageOnly = function () {
-    $scope.showNavigation = !$scope.showNavigation;
-    $scope.showImageTitle = !$scope.showImageTitle;
-    $ionicNavBarDelegate.showBar($scope.showNavigation);
+
+  // __  /   _ \    _ \    \  |       \  |   _ \   __ \   ____|
+  //    /   |   |  |   |  |\/ |      |\/ |  |   |  |   |  __|
+  //   /    |   |  |   |  |   |      |   |  |   |  |   |  |
+  //  ____| \___/  \___/  _|  _|     _|  _| \___/  ____/  _____|
+
+  $scope.showNavigation = true;
+  $scope.showFullSizeImage = false;
+
+  var toggleFullSizeImage = function (value) {
+    var scrollDelegate = getCurrentSlideScrollDelegate();
+    $scope.showFullSizeImage = value;
+
+    // required?
+    $timeout(function () {
+      scrollDelegate.resize();
+    }, 30);
   };
 
-  var toggleZoom = function () {
+  var toggleMinimalUI = function (value) {
+    $scope.showNavigation = !value;
+    $ionicNavBarDelegate.showBar(!value);
+  };
+
+  var toggleImageScrolling = function (value) {
+    getCurrentSlideScrollDelegate().freezeScroll(!value);
+  };
+
+  var toggleSlideSwiping = function (value) {
+    $ionicSlideBoxDelegate.enableSlide(value);
+  };
+
+  var isZoomMode = false;
+  var toggleZoomMode = function (doZoomMode) {
+    var isZoomMode = trueUtility.isUndefinedOrNull(doZoomMode) ? !isZoomMode : doZoomMode;
+
+    toggleFullSizeImage(isZoomMode);
+    toggleMinimalUI(isZoomMode);
+    toggleImageScrolling(isZoomMode);
+    toggleSlideSwiping(!isZoomMode);
+  };
+
+  var toggleZoomed = function () {
     var scrollDelegate = getCurrentSlideScrollDelegate();
     var currentZoomLevel = scrollDelegate.getScrollPosition().zoom;
 
     if (currentZoomLevel == 1) {
-      console.log("image double-tapped while zoomed out: zooming in");
-      scrollDelegate.zoomBy(8, true);
+      $timeout(function () {
+        scrollDelegate.zoomBy(2, true);
+      }, 10);
     } else {
-      console.log("image double-tapped while zoomed in: zooming out");
-      scrollDelegate.zoomTo(1, true);
+      $timeout(function () {
+        scrollDelegate.zoomTo(1, true);
+      }, 10);
     }
 
-    scrollDelegate.resize();
+    // required?
+    $timeout(function () {
+      scrollDelegate.resize();
+    }, 30);
   };
 
-  $scope.toggleZoomFocusMode = function () {
-    toggleZoom();
-    toggleImageOnly();
+  $scope.onDoubleTap = function () {
+    toggleZoomMode();
+    toggleZoomed();
   };
 
   $scope.updateSlideStatus = function (activeSlideIndex) {
@@ -93,46 +147,47 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxD
     var scrollPosition = scrollDelegate.getScrollPosition();
     var currentZoomLevel = scrollPosition.zoom;
 
-    if (currentZoomLevel == $scope.minZoom) {
-      $ionicSlideBoxDelegate.enableSlide(true);
-      scrollDelegate.freezeScroll(true);
-    } else {
-      $ionicSlideBoxDelegate.enableSlide(false);
-      scrollDelegate.freezeScroll(false);
+    var shouldRemoveZoomMode = (isZoomMode && currentZoomLevel == $scope.MIN_ZOOM);
+    if (shouldRemoveZoomMode) {
+      toggleZoomMode(false);
     }
   };
 
-  function init() {
-    var initialVoatPosts = VoatRepository.getVoatPosts();
-    addToVoatPosts(initialVoatPosts);
-
+  var initSlides = function () {
     var selectedSlideId = $stateParams.id;
     var selectedSlideIndex = trueUtility.findWithAttr(voatPosts, 'id', selectedSlideId);
     var initialSlides;
 
+    // default to first slide
     if (trueUtility.isUndefinedOrNull(selectedSlideIndex)) {
-      console.log('ERROR: couldn\'t find post with id: ' + selectedSlideId);
       selectedSlideIndex = 0;
     }
 
     // three cases to consider
-    // initial slide is first
+    // initial slide is the first slide
     if (selectedSlideIndex === 0) {
       initialSlides = [angular.copy(voatPosts[0]), angular.copy(voatPosts[1]), angular.copy(voatPosts[2])];
       $scope.selectedSlide = 0;
     }
-    // initial slide is last
+    // initial slide is the last slide
     else if (selectedSlideIndex === voatPosts.length - 1) {
       initialSlides = [angular.copy(voatPosts[voatPosts.length - 3]), angular.copy(voatPosts[voatPosts.length - 2]), angular.copy(voatPosts[voatPosts.length - 1])];
       $scope.selectedSlide = 2;
     }
-    // default
+    // initial slide is somewhere in the middle
     else {
       initialSlides = [angular.copy(voatPosts[selectedSlideIndex - 1]), angular.copy(voatPosts[selectedSlideIndex]), angular.copy(voatPosts[selectedSlideIndex + 1])];
       $scope.selectedSlide = 1;
     }
 
     $scope.slides = initialSlides;
+  };
+
+  function init() {
+    var initialVoatPosts = VoatRepository.getVoatPosts();
+    appendNewVoatPosts(initialVoatPosts);
+
+    initSlides();
   }
 
   init();

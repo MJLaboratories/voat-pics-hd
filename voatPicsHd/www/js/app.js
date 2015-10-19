@@ -1,4 +1,4 @@
-angular.module('app', ['ngIOS9UIWebViewPatch','ionic', 'app.controllers', 'app.services', 'ngCordova', 'ionic-material'])
+angular.module('app', ['ngIOS9UIWebViewPatch', 'ionic', 'app.controllers', 'app.services', 'ngCordova', 'ionic-material'])
 
   .run(function ($ionicPlatform, ionicMaterialInk) {
     $ionicPlatform.ready(function () {
@@ -34,3 +34,4 @@ angular.module('app', ['ngIOS9UIWebViewPatch','ionic', 'app.controllers', 'app.s
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/');
   });
+

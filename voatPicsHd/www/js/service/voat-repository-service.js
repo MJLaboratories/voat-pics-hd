@@ -1,5 +1,5 @@
 var module = angular.module('app.services');
-module.factory('VoatRepository', function ($q, VoatPost, $cacheFactory, CloudFlareProtectedUrlLoader, VoatPostBuilder) {
+module.factory('VoatRepository', function ($q, VoatPost, $cacheFactory, CloudFlareProtectedUrlLoader, VoatPostBuilder, ImagePreloader) {
   var VOAT_PICS_URL = 'https://voat.co/v/pics/';
   var VOAT_GIFS_URL = 'https://voat.co/v/gifs/';
   var VOAT_AWW_URL = 'https://voat.co/v/aww/';
@@ -96,6 +96,7 @@ module.factory('VoatRepository', function ($q, VoatPost, $cacheFactory, CloudFla
         var newPostsCombined = newPicsPosts.concat(newGifsPosts).concat(newAwwPosts).concat(newFunnyPosts);
         var newPostsCombinedAndShuffled = trueUtility.shuffle(newPostsCombined);
 
+        ImagePreloader.preloadImages(_.map(newPostsCombinedAndShuffled, function(post) { return post.link; }));
         voatPosts = voatPosts.concat(newPostsCombinedAndShuffled);
 
         loadMoreDeferred.resolve(newPostsCombinedAndShuffled);

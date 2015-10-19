@@ -1,6 +1,6 @@
 <ion-view view-title="Gallery" class="dark-background">
   <ion-slide-box
-    on-double-tap="toggleZoomFocusMode()"
+    on-double-tap="onDoubleTap()"
     on-slide-changed="slideHasChanged(index)"
     active-slide="selectedSlide"
     show-pager="false"
@@ -9,18 +9,19 @@
     <ion-slide ng-repeat="slide in slides">
       <ion-scroll direction="xy"
                   zooming="true"
-                  min-zoom="{{minZoom}}"
+                  min-zoom="{{MIN_ZOOM}}"
                   locking="false"
                   ng-class="{'has-header': showNavigation}"
                   style="width: 100%; height: 100%;"
                   delegate-handle="scrollHandle-{{$index}}"
                   on-scroll="updateSlideStatus(selectedSlide)"
                   on-release="updateSlideStatus(selectedSlide)">
-        <!--<div class="image" style="background-image: url( {{slide.link}} )"></div>-->
-        <img id="slide-image-{{$index}}" class="contain-content" ng-src="{{slide.link}}">
+
+        <img ng-hide="showFullSizeImage" id="slide-image-{{$index}}" class="contain-content" ng-src="{{slide.link}}">
+        <img ng-show="showFullSizeImage" ng-src="{{slide.link}}">
       </ion-scroll>
 
-      <div class="gallery-title-container" ng-show="showImageTitle">
+      <div class="gallery-title-container">
         <p class="gallery-title">{{slide.title}}</p>
         <button class="button button-clear icon ion-share gallery-share-button" on-tap="doShare()"></button>
       </div>
