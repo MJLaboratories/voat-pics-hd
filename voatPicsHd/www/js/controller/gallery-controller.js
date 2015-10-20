@@ -94,11 +94,6 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxD
     }, 30);
   };
 
-  var toggleMinimalUI = function (value) {
-    $scope.showNavigation = !value;
-    $ionicNavBarDelegate.showBar(!value);
-  };
-
   var toggleImageScrolling = function (value) {
     getCurrentSlideScrollDelegate().freezeScroll(!value);
   };
@@ -109,10 +104,9 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxD
 
   var isZoomMode = false;
   var toggleZoomMode = function (doZoomMode) {
-    var isZoomMode = trueUtility.isUndefinedOrNull(doZoomMode) ? !isZoomMode : doZoomMode;
+    isZoomMode = trueUtility.isUndefinedOrNull(doZoomMode) ? !isZoomMode : doZoomMode;
 
     toggleFullSizeImage(isZoomMode);
-    toggleMinimalUI(isZoomMode);
     toggleImageScrolling(isZoomMode);
     toggleSlideSwiping(!isZoomMode);
   };
@@ -137,9 +131,25 @@ module.controller('GalleryCtrl', function ($scope, $stateParams, $ionicSlideBoxD
     }, 30);
   };
 
+  var isMinimalUI = false;
+  $scope.showImageTitle = !isMinimalUI;
+  var toggleMinimalUI = function () {
+    isMinimalUI = !isMinimalUI;
+
+    $scope.showImageTitle = !isMinimalUI;
+    $scope.showNavigation = !isMinimalUI;
+    $ionicNavBarDelegate.showBar(!isMinimalUI);
+  };
+
   $scope.onDoubleTap = function () {
+    console.log("DOUBLE TAP");
     toggleZoomMode();
     toggleZoomed();
+  };
+
+  $scope.onSingleTap = function () {
+    console.log("SINGLE TAP");
+    toggleMinimalUI();
   };
 
   $scope.updateSlideStatus = function (activeSlideIndex) {

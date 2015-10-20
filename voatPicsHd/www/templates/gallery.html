@@ -21,7 +21,7 @@
         <img ng-show="showFullSizeImage" ng-src="{{slide.link}}">
       </ion-scroll>
 
-      <div class="gallery-title-container">
+      <div class="gallery-title-container" ng-class="{'hidden': !showImageTitle}">
         <p class="gallery-title">{{slide.title}}</p>
         <button class="button button-clear icon ion-share gallery-share-button" on-tap="doShare()"></button>
       </div>
