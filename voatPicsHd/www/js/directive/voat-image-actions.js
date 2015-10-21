@@ -2,41 +2,30 @@ angular.module('app.directives').directive('voatImageActions', ['$timeout', '$io
   return {
     restrict: 'A',
     link: function (scope, element) {
-      var isDoubleTapAction = false;
+      var tapCount = 0;
 
-      var imageDoubleTapGesture = function imageDoubleTapGesture(event) {
-
-        isDoubleTapAction = true;
-
-        $timeout(function () {
-          isDoubleTapAction = false;
-        }, 200);
-      };
 
       var imageTapGesture = function imageTapGesture(event) {
+        tapCount++;
 
-        if (isDoubleTapAction === true) {
-          return;
-        }
-        else {
+        if (tapCount == 1) {
           $timeout(function () {
-            if (isDoubleTapAction === true) {
-
-              scope.onDoubleTap();
-              return;
+            try {
+              if (tapCount === 1) {
+                scope.onSingleTap();
+              } else {
+                scope.onDoubleTap();
+              }
+            } finally {
+              tapCount = 0;
             }
-            else {
-              scope.onSingleTap();
-            }
-          }, 200);
+          }, 450);
         }
       };
 
-      var doubleTapEvent = $ionicGesture.on('doubletap', imageDoubleTapGesture, element);
       var tapEvent = $ionicGesture.on('tap', imageTapGesture, element);
 
       scope.$on('$destroy', function () {
-        $ionicGesture.off(doubleTapEvent, 'doubletap', imageDoubleTapGesture);
         $ionicGesture.off(tapEvent, 'tap', imageTapGesture);
       });
     }
