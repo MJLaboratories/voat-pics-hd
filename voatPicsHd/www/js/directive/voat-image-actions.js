@@ -23,11 +23,11 @@ angular.module('app.directives').directive('voatImageActions', ['$timeout', '$io
         }
       };
 
-      var tapEvent = $ionicGesture.on('tap', imageTapGesture, element);
-
-      scope.$on('$destroy', function () {
-        $ionicGesture.off(tapEvent, 'tap', imageTapGesture);
-      });
+      //var tapEvent = $ionicGesture.on('tap', imageTapGesture, element);
+      //
+      //scope.$on('$destroy', function () {
+      //  $ionicGesture.off(tapEvent, 'tap', imageTapGesture);
+      //});
     }
   }
 }]);
